@@ -24,5 +24,11 @@ namespace ConsoleApp1
 
 
         }
+
+
+        private void NewFunction()
+        {
+
+        }
     }
 }
