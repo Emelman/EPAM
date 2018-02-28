@@ -16,6 +16,7 @@ namespace ConsoleApp1
             for(i=0; i < 20; i++)
             {
                 Console.WriteLine("boolshit"+i.ToString());
+                Console.ReadLine();
             }
 
             Console.WriteLine("boolshit2!");
