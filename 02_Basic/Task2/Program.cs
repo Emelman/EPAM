@@ -10,7 +10,7 @@ namespace Task2
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("puth the number");
+            Console.WriteLine("put the number");
             var nHeigth = Console.ReadLine();
             int i;
             int length = int.Parse(nHeigth);
