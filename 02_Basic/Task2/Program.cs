@@ -10,20 +10,15 @@ namespace Task2
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("put the number");
+            Console.WriteLine("Enter the number:");
             var nHeigth = Console.ReadLine();
-            int i;
             int length = int.Parse(nHeigth);
-
-
-            for(i = 0; i < length; i++)
+            Console.WriteLine("Draw hill:");
+            for (var i = 0; i < length; i++)
             {
-                string pad = new string('*', i+1);
+                string pad = new string('*', i + 1);
                 Console.WriteLine(pad);
-
             }
-
-
             Console.ReadKey();
         }
     }

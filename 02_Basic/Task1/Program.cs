@@ -18,15 +18,16 @@ namespace Task1
 
             int width = int.Parse(widthString);
             int height = int.Parse(heightString);
-            int s = width * height;
+            int area = width * height;
 
             if (width > 0 && height > 0)
             {
-                Console.WriteLine(s);
+                Console.WriteLine("Rect area:");
+                Console.WriteLine(area);
             }
             else
             {
-                Console.WriteLine("ERrror");
+                Console.WriteLine("data input ERrror");
             }
 
             Console.ReadKey();
