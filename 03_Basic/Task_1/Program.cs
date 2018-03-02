@@ -10,15 +10,46 @@ namespace Task_1
     {
 
         static Random randomNum = new Random();
-        
+        static int[] numArray;
+
+
 
         static void Main(string[] args)
         {
-            Console.WriteLine("Enter array length:");
-            int[] numArray = NumGenerator((int.Parse(Console.ReadLine())));
+
+            GetParameters();
+
+            SortArray(numArray);
 
 
         }
+
+        private static void GetParameters()
+        {
+            Console.WriteLine("Enter array length:");
+            var length = (int.Parse(Console.ReadLine()));
+            Console.WriteLine("Enter max and min int value:");
+            var minVal = int.Parse(Console.ReadLine());
+            var maxVal = int.Parse(Console.ReadLine());
+            numArray = NumGenerator(length, minVal, maxVal);
+
+
+            Console.ReadKey();
+        }
+
+
+        private static void SortArray(int [] someArray)
+        {
+            numArray = Array.Sort(numArray, 1);
+            someArray[2] = 10;
+
+
+
+        }
+
+
+
+
 
         private static int[] NumGenerator(int length = 0, int min = -10, int max = 10)
         {
@@ -27,8 +58,6 @@ namespace Task_1
             {
                 tempArray[i] = randomNum.Next(min, max);
             }
-
-
             return tempArray;
         }
 
