@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{0E588F63-95C5-41B2-925E-01C814C72F0F}</ProjectGuid>
+    <ProjectGuid>{01821E53-B093-44C5-B284-B44D57CACA54}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>_03_Basic</RootNamespace>
-    <AssemblyName>03_Basic</AssemblyName>
+    <RootNamespace>Task_2</RootNamespace>
+    <AssemblyName>Task_2</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -47,6 +47,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\MyPersonalHelper\MyPersonalHelper.csproj">
+      <Project>{c77bfc75-1061-4821-b950-670561e14ae2}</Project>
+      <Name>MyPersonalHelper</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
