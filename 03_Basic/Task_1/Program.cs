@@ -8,20 +8,13 @@ namespace Task_1
 {
     class Program
     {
-
-        static Random randomNum = new Random();
         static int[] numArray;
-
-
 
         static void Main(string[] args)
         {
-
             GetParameters();
 
             SortArray(numArray);
-
-
         }
 
         private static void GetParameters()
@@ -31,35 +24,27 @@ namespace Task_1
             Console.WriteLine("Enter max and min int value:");
             var minVal = int.Parse(Console.ReadLine());
             var maxVal = int.Parse(Console.ReadLine());
-            numArray = NumGenerator(length, minVal, maxVal);
-
-
+            numArray = MyPersonalHelper.GeneratorRnd.OneDimensional(length, minVal, maxVal);
+            Console.WriteLine(string.Join(",",SortArray(numArray))); //get the bubble sort result on screen
             Console.ReadKey();
         }
 
-
-        private static void SortArray(int [] someArray)
+        private static int[] SortArray(int [] sortedArray)
         {
-            numArray = Array.Sort(numArray, 1);
-            someArray[2] = 10;
-
-
-
-        }
-
-
-
-
-
-        private static int[] NumGenerator(int length = 0, int min = -10, int max = 10)
-        {
-            int[] tempArray = new int[length];
-            for(var i = 0; i < length; i++)
+            int temp = 0;
+            for (int i = 0; i < sortedArray.Length; i++)
             {
-                tempArray[i] = randomNum.Next(min, max);
+                for (int sort = 0; sort < sortedArray.Length - 1; sort++)
+                {
+                    if (sortedArray[sort] > sortedArray[sort + 1])
+                    {
+                        temp = sortedArray[sort + 1];
+                        sortedArray[sort + 1] = sortedArray[sort];
+                        sortedArray[sort] = temp;
+                    }
+                }
             }
-            return tempArray;
-        }
-
+            return sortedArray;
+        }    
     }
 }
