@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MyPersonalHelper;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -24,7 +25,7 @@ namespace Task_1
             Console.WriteLine("Enter max and min int value:");
             var minVal = int.Parse(Console.ReadLine());
             var maxVal = int.Parse(Console.ReadLine());
-            numArray = MyPersonalHelper.GeneratorRnd.OneDimensional(length, minVal, maxVal);
+            numArray = GeneratorRnd.OneDimensional(length, minVal, maxVal);
             Console.WriteLine(string.Join(",",SortArray(numArray))); //get the bubble sort result on screen
             Console.ReadKey();
         }

@@ -21,7 +21,8 @@ namespace Task_3
             var maxVal = int.Parse(Console.ReadLine());
             numArray = GeneratorRnd.OneDimensional(length, minVal, maxVal);
             int? amount = CountAllPoisitiveNum(numArray);
-            Console.WriteLine("Show amount:"+amount.ToString());
+            var result = amount.HasValue ? amount.Value.ToString() : "no data";
+            Console.WriteLine("Show amount:" + result);
             Console.ReadKey();
         }
 
@@ -29,9 +30,16 @@ namespace Task_3
         {
             int[] test = new int[numArray.Length];
             int number = 0;
+            int? num = null;
             for(var i = 0; i < numArray.Length; i++)
             {
-                if(numArray[i] > 0)
+                if(num == null)
+                {
+
+                }
+
+
+                if(numArray[i] >= 0)
                 {
                     number += numArray[i];
                     test[i] = numArray[i];
