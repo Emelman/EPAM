@@ -11,19 +11,39 @@ namespace Task_1
         static void Main(string[] args)
         {
             Console.WriteLine("Enter the text to parce or use default:");
-            //var text = Console.ReadLine();
-            string text = "Написать программу, котораяuuuuu определяетuuuuu среднююuuuu длинуuuuuuu ";
-
-
-            //dump();
-            int wordLength = ParceText(text);
-
+            var text = Console.ReadLine();
+            if (text == "default")
+            {
+                text = "Написать программу, которая определяет среднюю длину слова во введенной текстовой строке. " +
+                    "Учесть, что символы пунктуации на длину слов влиять не должны. Используйте стандартные методы " +
+                    "класса String.";
+            }
+            string[] words = SeparateOnWords(text);
+            int wordLength = CountWordlength(words);
+            DisplayAll(words, wordLength);
         }
 
-        private static int ParceText(string text)
+        private static void DisplayAll(string[] words, int wordLength)
         {
-            int totalLength = 0;
+            Console.WriteLine("Result:");
+            Console.WriteLine(wordLength);
+            Console.WriteLine(string.Join(",", words));
+            Console.ReadKey();
+        }
+
+        private static int CountWordlength(string[] words)
+        {
             int countWords = 0;
+            for (var i = 0; i < words.Length; i++)
+            {
+                countWords += words[i].Length;
+            }
+            countWords = countWords / words.Length;
+            return countWords;
+        }
+
+        private static string[] SeparateOnWords(string text)
+        {
             List<char> separatorArray = new List<char>();
             for(var i = 0; i < text.Length; i++)
             {
@@ -32,22 +52,9 @@ namespace Task_1
                     separatorArray.Add(text[i]);
                 }
             }
-
             string[] words = text.Split(separatorArray.ToArray(), StringSplitOptions.RemoveEmptyEntries);
-            for(var i = 0; i < words.Length; i++)
-            {
-                countWords += words[i].Length;
-            }
-            countWords = countWords / words.Length;
-            Console.WriteLine("REsult:");
-            Console.WriteLine(countWords);
-            Console.WriteLine(words);
-            Console.ReadKey();
-            return totalLength;
+            return words;
         }
-
-
-
 
         public static void Dump()
         {
@@ -57,6 +64,5 @@ namespace Task_1
             Console.WriteLine("Trimmmed\n   {0}\nto\n   '{1}'", banner, result);
             Console.ReadKey();
         }
-
     }
 }

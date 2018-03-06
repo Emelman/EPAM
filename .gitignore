@@ -260,3 +260,4 @@ paket-files/
 __pycache__/
 *.pyc
 /02_Basic/NotATask
+/04_Basic/04_Basic/TaskExtension.csproj
