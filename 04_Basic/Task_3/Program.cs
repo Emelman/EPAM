@@ -27,7 +27,7 @@ namespace Task_3
             double num = 123213.132;
             Console.WriteLine("\t" + dt.ToString(culture1) + "\t\n");
             Console.WriteLine("\t" + dt.ToString(culture2) + "\t\n");
-            Console.WriteLine("\t" + String.Format(culture1, "{0:0,0.000}", num) + "\t\n");
+            Console.WriteLine("\t" + String.Format(culture1, "{0:C}", num) + "\t\n");
             Console.WriteLine("\t" + String.Format(culture2, "{0:0,0.000}", num) + "\t\n");
             Console.ReadKey();
         }

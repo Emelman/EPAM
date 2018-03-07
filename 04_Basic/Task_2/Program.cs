@@ -66,6 +66,11 @@ namespace Task_2
 
         private static string ModifyLine(string toModify, string keyLine)
         {
+            foreach(var c in keyLine)
+            {
+                toModify = toModify.Replace(c.ToString(), new string(c, 2));
+            }
+
             List<char> tempArray = new List<char>();
             for (var i = 0; i < toModify.Length; i++)
             {

@@ -19,18 +19,18 @@ namespace Task_4
         {
             TimeSpan[] strTimer = new TimeSpan[10];
             TimeSpan[] strBuilderTimer = new TimeSpan[10];
-            int count = 100;
+            int count = 10;
             for(var i = 0; i < 10; i++)
             {
                 TimeSpan ts1 = ExecuteStringvalue(count + 100*i*i);
                 strTimer[i] = ts1;
             }
+
             for(var i = 0; i < 10; i++)
             {
                 TimeSpan ts2 = ExecuteStringBuilderValue(count + 100 * i*i);
                 strBuilderTimer[i] = ts2;
             }
-
             
             PrintTablet(strTimer);
             PrintTablet(strBuilderTimer);
@@ -38,7 +38,7 @@ namespace Task_4
 
         private static void PrintTablet(TimeSpan[] strTimer)
         {
-            int count = 100;
+            int count = 10;
             for (var i = 0; i < 10; i++)
             {
                 Console.WriteLine(strTimer[i].ToString() + " - {0}\n", count + 100*i*i);
@@ -52,7 +52,7 @@ namespace Task_4
             Stopwatch timer = Stopwatch.StartNew();
             for (int i = 0; i < count; i++)
             {
-                sb.Append("*");
+                sb.Append("*-=-=-=asdasd");
             }
             timer.Stop();
             return timer.Elapsed;
@@ -60,11 +60,11 @@ namespace Task_4
 
         private static TimeSpan ExecuteStringvalue(int count)
         {
-            string str = "";
+            string str = string.Empty;
             Stopwatch timer = Stopwatch.StartNew();
             for (int i = 0; i < count; i++)
             {
-                str += "*";
+                str += "*-=-=-=asdasd";
             }
             timer.Stop();
             return timer.Elapsed;
