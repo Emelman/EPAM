@@ -11,9 +11,7 @@ namespace Task_1
     {
         static void Main(string[] args)
         {
-            
             Options();
-            
 
         }
 
@@ -43,7 +41,7 @@ namespace Task_1
             alex.Surname = surname;
             alex.Patronomic = patronymic;
             alex.BirthDay = date1;
-            return alex; //brand new alex
+            return alex; //brand new user
         }
     }
 }

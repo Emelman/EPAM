@@ -18,7 +18,7 @@ namespace Task_1
         {
             get
             {
-                if(name == string.Empty)
+                if (name == string.Empty)
                 {
                     throw (Error.InnerException);
                 }
@@ -26,7 +26,7 @@ namespace Task_1
             }
             set
             {
-                if(value != string.Empty)
+                if (value != string.Empty)
                 {
                     name = value;
                 }
@@ -64,11 +64,15 @@ namespace Task_1
         {
             get
             {
+                if (patronymic == string.Empty)
+                {
+                    throw (Error.InnerException);
+                }
                 return patronymic;
             }
             set
             {
-                if(value != string.Empty)
+                if (value != string.Empty)
                 {
                     patronymic = value;
                 }
@@ -87,7 +91,7 @@ namespace Task_1
             }
             set
             {
-                if(value == null)
+                if (value == null)
                 {
                     throw (Error.InnerException);
                 }
@@ -106,9 +110,9 @@ namespace Task_1
             {
                 return age;
             }
-            set
+            private set
             {
-                if(age < 0)
+                if (value < 0)
                 {
                     throw (Error.InnerException);
                 }
