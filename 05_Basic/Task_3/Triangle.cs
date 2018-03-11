@@ -93,13 +93,13 @@ namespace Task_3
 
         private void IsValid()
         {
-            if ((sideA <= 0 || sideB <= 0 || sideC <= 0) && isTriangle) 
+            if ((sideA <= 0 || sideB <= 0 || sideC <= 0) && IsTriangle) 
             {
                 throw new Exception("Sides of the triangle can` t be negative");
             }
         }
 
-        private bool isTriangle
+        private bool IsTriangle
         {
             get
             {
