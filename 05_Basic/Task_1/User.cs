@@ -10,29 +10,30 @@ namespace Task_1
     {
         string name;
         string surname;
-        string patronymic;
         DateTime birthDay;
-        int age;
+
+        public User(string _name,string _surname, string patr = null)
+        {
+            Name = _name;
+            Surname = _surname;
+            Patronomic = patr;
+        }
 
         public string Name
         {
             get
             {
-                if (name == string.Empty)
-                {
-                    throw (Error.InnerException);
-                }
                 return name;
             }
             set
             {
-                if (value != string.Empty)
+                if (!string.IsNullOrEmpty(value))
                 {
                     name = value;
                 }
                 else
                 {
-                    throw (Error.InnerException);
+                    throw new ArgumentException("Name cannot be empty.");
                 }
             }
         }
@@ -41,46 +42,25 @@ namespace Task_1
         {
             get
             {
-                if (surname == string.Empty)
-                {
-                    throw (Error.InnerException);
-                }
                 return surname;
             }
             set
             {
-                if (value != string.Empty)
+                if (!string.IsNullOrEmpty(value))
                 {
                     surname = value;
                 }
                 else
                 {
-                    throw (Error.InnerException);
+                    throw new ArgumentException("Wrong suname");
                 }
             }
         }
 
         public string Patronomic
         {
-            get
-            {
-                if (patronymic == string.Empty)
-                {
-                    throw (Error.InnerException);
-                }
-                return patronymic;
-            }
-            set
-            {
-                if (value != string.Empty)
-                {
-                    patronymic = value;
-                }
-                else
-                {
-                    throw (Error.InnerException);
-                }
-            }
+            get;
+            set;
         }
 
         public DateTime BirthDay
@@ -91,15 +71,14 @@ namespace Task_1
             }
             set
             {
-                if (value == null)
+                if (value > DateTime.Now && (value.Year - DateTime.Now.Year) < 100)
                 {
-                    throw (Error.InnerException);
+                    throw new ArgumentException("Wrong date!");
                 }
                 else
                 {
+
                     birthDay = value;
-                    DateTime current = DateTime.Today;
-                    Age = current.Year - value.Year;
                 }
             }
         }
@@ -108,21 +87,10 @@ namespace Task_1
         {
             get
             {
-                return age;
-            }
-            private set
-            {
-                if (value < 0)
-                {
-                    throw (Error.InnerException);
-                }
-                else
-                {
-                    age = value;
-                }
+                //DateTime.Today.Ticks
+                return 6;
+                
             }
         }
-
-        public Exception Error { get; private set; }
     }
 }

@@ -10,11 +10,8 @@ namespace Task_4
     {
         static void Main(string[] args)
         {
-
-
-
             string word = "some words on my library";
-            string badWord = "ass";
+            string badWord = " add something";
             string b = word;
             MyString line = new MyString(word);
             MyString line2 = new MyString(badWord);

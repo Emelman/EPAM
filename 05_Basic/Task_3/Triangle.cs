@@ -8,122 +8,64 @@ namespace Task_3
 {
     class Triangle
     {
-        private Boolean initialised = false;
-        private int sideA;
-        private int sideB;
-        private int sideC;
-        private int area;
-        private int perimetr;
-
-
-        public Triangle(int v1, int v2, int v3)
+        public Triangle(double v1, double v2, double v3)
         {
-            IsValid(v1, v2, v3);
+            ThrowIfInvalid(v1, v2, v3);
             SideA = v1;
             SideB = v2;
             SideC = v3;
-            initialised = true;
         }
 
-        public int SideA
+        public double SideA
         {
-            get
-            {
-                return sideA;
-            }
-            set
-            {
-                if (initialised)
-                {
-                    IsValid();
-                }
-                sideA = value;
-            }
+            get;
+            private set;
         }
 
-        public int SideB
+        public double SideB
         {
-            get
-            {
-                return sideB;
-            }
-            set
-            {
-                if (initialised)
-                {
-                    IsValid();
-                }
-                sideB = value;
-            }
+            get;
+            private set;
         }
 
-        public int SideC
+        public double SideC
         {
-            get
-            {
-                return sideC;
-            }
-            set
-            {
-                if (initialised)
-                {
-                    IsValid();
-                }
-                sideC = value;
-            }
+            get;
+            private set;
         }
 
-        internal void PrintSides()
+        public override string ToString()
         {
-            Console.WriteLine("a is {0}, b is {1}, c is {2}", sideA, sideB, sideC);
-            Console.ReadKey();
+            //return string.Format("a is {0}, b is {1}, c is {2}", SideA, SideB, SideC);
+            return $"a is {SideA}, b is {SideB}, c is {SideC}";
         }
 
-        static void IsValid(int a, int b, int c)
+        static void ThrowIfInvalid(double a, double b, double c)
         {
             if (a <= 0 || b <= 0 || c <= 0)
             {
                 throw new Exception("Sides of the triangle can` t be negative");
             }
-            else if (a + b > c || a + c > b || b + c > a)
+            else if (a + b < c || a + c < b || b + c < a)
             {
                 throw new Exception("This is not a triangle");
             }
         }
 
-        private void IsValid()
-        {
-            if ((sideA <= 0 || sideB <= 0 || sideC <= 0) && IsTriangle) 
-            {
-                throw new Exception("Sides of the triangle can` t be negative");
-            }
-        }
-
-        private bool IsTriangle
+        public double Perimetr
         {
             get
             {
-                if (sideA + sideB > sideC && sideA + sideC > sideB && sideB + sideC > sideA)
-                {
-                    return true;
-                }
-                return false;
+                return SideA + SideB + SideC;
             }
         }
 
-        public int Perimetr()
+        public double Area
         {
-            return sideA + sideB + sideC;
-        }
-
-        public double Area()
-        {
-            return Math.Sqrt(HalfPer() * (HalfPer() - sideA) * (HalfPer() - sideB) * (HalfPer() - sideC));
-        }
-
-        public double HalfPer()
-        {
-            return Perimetr() / 2;
+            get
+            {
+                return Math.Sqrt(Perimetr / 2 * ( - SideA) * (Perimetr / 2 - SideB) * (Perimetr / 2 - SideC));
+            }
         }
     }
 }

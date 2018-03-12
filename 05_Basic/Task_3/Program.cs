@@ -21,7 +21,6 @@ namespace Task_3
             else
             {
                 GenerateTriangle(parameters);
-                
             }
         }
 
@@ -29,20 +28,20 @@ namespace Task_3
         {
             try
             {
-                Triangle litleAng = new Triangle(int.Parse(parameters[0]), int.Parse(parameters[1]), int.Parse(parameters[2]));
+                Triangle litleAng = new Triangle(double.Parse(parameters[0]), double.Parse(parameters[1]), double.Parse(parameters[2]));
                 if (litleAng != null)
                 {
-                    litleAng.PrintSides();
+                    Console.WriteLine(litleAng.ToString());
                 }
                 else
                 {
                     throw new Exception("There is no triangle with such sides");
                 }
 
-                double ar = litleAng.Area();
+                double at = litleAng.Area;
 
-                Console.WriteLine("Perimetr={0}", litleAng.Perimetr());
-                Console.WriteLine("Sqaure={0}", litleAng.Area());
+                Console.WriteLine("Perimetr={0}", litleAng.Perimetr);
+                Console.WriteLine("Sqaure={0}", litleAng.Area);
 
             }
             catch (Exception e)
@@ -53,7 +52,6 @@ namespace Task_3
             {
                 Console.ReadKey();
             }
-
         }
 
         private static string[] SeparateOnWords(string text)

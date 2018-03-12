@@ -10,9 +10,9 @@ namespace Task_6
     class Program
     {
         static string pattern = @"[-]?\d+(?:\.\d+(?:e-\d+)?)?";
-        static string sciencePattern = @"[-]?\d+\.\d+e-{0,1}\d+";
+        static string sciencePattern = @"[-]?\d\.\d+e-{0,1}\d+";
         static string fractionPattern = @"[-]?\d+\.\d+";
-        static string numPattern = @"\d+";
+        static string numPattern = @"[-]?\d+";
         private static string toModify;
         private static string keyLine;
 

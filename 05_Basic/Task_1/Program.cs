@@ -12,7 +12,6 @@ namespace Task_1
         static void Main(string[] args)
         {
             Options();
-
         }
 
         private static void Options()
@@ -36,10 +35,7 @@ namespace Task_1
 
         private static User CreateNewAlex(string name, string patronymic, string surname, DateTime date1)
         {
-            User alex = new User();
-            alex.Name = name;
-            alex.Surname = surname;
-            alex.Patronomic = patronymic;
+            User alex = new User(name, surname, patronymic);
             alex.BirthDay = date1;
             return alex; //brand new user
         }

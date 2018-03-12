@@ -5,42 +5,37 @@ namespace Task_4
     internal class MyString
     {
         private char[] letters;
-        double height, length, breadth;
-
 
         public MyString(string word)
         {
-            IsValid(word);
-            letters = word.ToCharArray();
-        }
-
-        private void IsValid(string word)
-        {
-            if (string.IsNullOrEmpty(word))
+            if (!IsValid(word))
             {
                 throw new Exception("Empty");
             }
+            letters = word.ToCharArray();
         }
 
-        public new string ToString
+        private bool IsValid(string word)
         {
-            get
+            if (string.IsNullOrEmpty(word))
             {
-                string line = new string(letters);
-                return line;
+                return false;
             }
+            return true;
+        }
+
+        public override string ToString()
+        {
+            string line = new string(letters);
+            return line;
         }
 
         public static MyString operator +(MyString c1, MyString c2)
         {
-            char[] copy = new char[c1.letters.Length + c2.letters.Length];
-            Array.Copy(c1.letters, copy, c1.letters.Length);
-            Array.Copy(c2.letters, 0, copy, c1.letters.Length, c2.letters.Length);
-            Console.WriteLine("Hello");
-            string result = new string(copy);
-            Console.WriteLine(result);
-            Console.ReadKey();
-            return new MyString(result);
+            var s1 = c1.ToString();
+            var s2 = c2.ToString();
+            var s3 = s1 + s2;
+            return new MyString(s3);
         }
 
         public static MyString operator -(MyString c1, MyString c2)
@@ -53,7 +48,7 @@ namespace Task_4
 
         public static bool operator ==(MyString obj1, MyString obj2)
         {
-            return (obj1.letters.Equals(obj2));
+            return obj1.ToString().Equals(obj2.ToString());
         }
 
         public static bool operator !=(MyString obj1, MyString obj2)
@@ -63,21 +58,20 @@ namespace Task_4
 
         public override bool Equals(object obj)
         {
-            if (ReferenceEquals(null, obj))
+            var mystring = obj as MyString;
+            if (mystring != null)
+            {
+                return mystring == this;
+            }
+            else
             {
                 return false;
             }
-            if (ReferenceEquals(this, obj))
-            {
-                return true;
-            }
-
-            return obj.GetType() == GetType() && Equals((MyString)obj);
         }
 
         public override int GetHashCode()
         {
-            return 10;
+            return new string(letters).GetHashCode();
         }
 
         public char[] Letters
@@ -87,6 +81,5 @@ namespace Task_4
                 return letters;
             }
         }
-        
     }
 }

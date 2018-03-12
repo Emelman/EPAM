@@ -10,8 +10,12 @@ namespace Task_2
     {
         Point center;
         double rad;
-        double area;
-        double circumference;
+
+        public Round(Point _point, int v)
+        {
+            Center = _point;
+            Rad = v;
+        }
 
         public Point Center
         {
@@ -21,7 +25,14 @@ namespace Task_2
             }
             set
             {
-                center = value;
+                if (value == null)
+                {
+                    throw new ArgumentException("Enter valid parameters");
+                }
+                else
+                {
+                    center = value;
+                }
             }
         }
 
@@ -36,12 +47,10 @@ namespace Task_2
                 if(value > 0)
                 {
                     rad = value;
-                    Circumference = rad;
-                    Area = rad;
                 }
                 else
                 {
-                    throw (Error.InnerException);
+                    throw new ArgumentException("Wrong Radius");
                 }
             }
         }
@@ -50,11 +59,7 @@ namespace Task_2
         {
             get
             {
-                return circumference;
-            }
-            private set
-            {
-                circumference = 2*Math.PI*value;
+                return 2 * Math.PI*Rad;
             }
         }
 
@@ -62,14 +67,8 @@ namespace Task_2
         {
             get
             {
-                return area;
-            }
-            private set
-            {
-                area = Math.PI * Math.Pow(value, 2);
+                return Math.PI * Math.Pow(Rad, 2);
             }
         }
-
-        public Exception Error { get; private set; }
     }
 }

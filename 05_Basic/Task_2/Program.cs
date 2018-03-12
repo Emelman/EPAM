@@ -11,9 +11,7 @@ namespace Task_2
         static void Main(string[] args)
         {
             Console.WriteLine("Create Round object, print radius:");
-            Round circle = new Round();
-            circle.Center = new Point(30, 40);
-            circle.Rad = int.Parse(Console.ReadLine()); 
+            Round circle = new Round(new Point(30,40), int.Parse(Console.ReadLine()));
             Console.WriteLine("Result - circle data:");
             Console.WriteLine("circle x position {0}, circle y position {1}", circle.Center.X, circle.Center.Y);
             Console.WriteLine("Circle Circumference - {0}", circle.Circumference);
