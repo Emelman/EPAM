@@ -64,7 +64,7 @@ namespace Task_3
         {
             get
             {
-                return Math.Sqrt(Perimetr / 2 * ( - SideA) * (Perimetr / 2 - SideB) * (Perimetr / 2 - SideC));
+                return Math.Sqrt(Perimetr / 2 * (Perimetr / 2 - SideA) * (Perimetr / 2 - SideB) * (Perimetr / 2 - SideC));
             }
         }
     }

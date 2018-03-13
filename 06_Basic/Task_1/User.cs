@@ -8,31 +8,37 @@ namespace Task_1
 {
     class User
     {
+        public static uint pensionerAge = 65;
+        public static uint adultHumanAge = 18;
+
         string name;
         string surname;
-        string patronymic;
         DateTime birthDay;
-        int age;
+
+        public User(string _name, string _surname, bool _maleFemale, DateTime _birthD, string patr = null)
+        {
+            Name = _name;
+            Surname = _surname;
+            MaleOrFemale = _maleFemale;
+            BirthDay = _birthD;
+            Patronomic = patr;
+        }
 
         public string Name
         {
             get
             {
-                if (name == string.Empty)
-                {
-                    throw (Error.InnerException);
-                }
                 return name;
             }
             set
             {
-                if (value != string.Empty)
+                if (!string.IsNullOrEmpty(value))
                 {
                     name = value;
                 }
                 else
                 {
-                    throw (Error.InnerException);
+                    throw new ArgumentException("Name cannot be empty or null!");
                 }
             }
         }
@@ -41,46 +47,31 @@ namespace Task_1
         {
             get
             {
-                if (surname == string.Empty)
-                {
-                    throw (Error.InnerException);
-                }
                 return surname;
             }
             set
             {
-                if (value != string.Empty)
+                if (!string.IsNullOrEmpty(value))
                 {
                     surname = value;
                 }
                 else
                 {
-                    throw (Error.InnerException);
+                    throw new ArgumentException("Wrong suname");
                 }
             }
         }
 
         public string Patronomic
         {
-            get
-            {
-                if (patronymic == string.Empty)
-                {
-                    throw (Error.InnerException);
-                }
-                return patronymic;
-            }
-            set
-            {
-                if (value != string.Empty)
-                {
-                    patronymic = value;
-                }
-                else
-                {
-                    throw (Error.InnerException);
-                }
-            }
+            get;
+            set;
+        }
+
+        public bool MaleOrFemale
+        {
+            get;
+            private set;
         }
 
         public DateTime BirthDay
@@ -89,17 +80,12 @@ namespace Task_1
             {
                 return birthDay;
             }
-            set
+            private set
             {
-                if (value == null)
+                birthDay = value;
+                if (value > DateTime.Now && Age < 100)
                 {
-                    throw (Error.InnerException);
-                }
-                else
-                {
-                    birthDay = value;
-                    DateTime current = DateTime.Today;
-                    Age = current.Year - value.Year;
+                    throw new ArgumentException("Wrong date!");
                 }
             }
         }
@@ -108,21 +94,22 @@ namespace Task_1
         {
             get
             {
+                DateTime now = DateTime.Now;
+                int age = now.Year - birthDay.Year;
+                if (now.Month > birthDay.Month || (now.Month == birthDay.Month && now.Day < birthDay.Day))
+                {
+                    age--;
+                }
                 return age;
-            }
-            private set
-            {
-                if (value < 0)
-                {
-                    throw (Error.InnerException);
-                }
-                else
-                {
-                    age = value;
-                }
             }
         }
 
-        public Exception Error { get; private set; }
+        public DateTime BecomeAdult
+        {
+            get
+            {
+                return BirthDay.AddYears(18);
+            }
+        }
     }
 }
