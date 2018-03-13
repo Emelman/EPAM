@@ -37,7 +37,7 @@ namespace Task_1
 
         private void PermissibleEmployee()
         {
-            if(Age < User.pensionerAge && Age < User.adultHumanAge)
+            if (Age < User.pensionerAge && Age < User.adultHumanAge)
             {
                 throw new ArgumentException("do not satisfy staff requirements!");
             }
@@ -67,7 +67,7 @@ namespace Task_1
                 }
                 else
                 {
-                    throw new ArgumentException("To erly for work!)");
+                    throw new ArgumentException("To early for work!)");
                 }
             }
         }
@@ -105,11 +105,19 @@ namespace Task_1
             }
             set
             {
-                if(value < 0)
+                if (value < 0)
                 {
                     throw new ArgumentException("Salary cant be negative!");
                 }
                 salary = value;
+            }
+        }
+
+        public DateTime BecomeAdult
+        {
+            get
+            {
+                return BirthDay.AddYears(18);
             }
         }
 

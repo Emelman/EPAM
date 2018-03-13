@@ -103,13 +103,5 @@ namespace Task_1
                 return age;
             }
         }
-
-        public DateTime BecomeAdult
-        {
-            get
-            {
-                return BirthDay.AddYears(18);
-            }
-        }
     }
 }
