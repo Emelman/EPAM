@@ -8,14 +8,19 @@ namespace Task_1
 {
     class User
     {
+        public static uint pensionerAge = 65;
+        public static uint adultHumanAge = 18;
+
         string name;
         string surname;
         DateTime birthDay;
 
-        public User(string _name,string _surname, string patr = null)
+        public User(string _name, string _surname, bool _maleFemale, DateTime _birthD, string patr = null)
         {
             Name = _name;
             Surname = _surname;
+            MaleOrFemale = _maleFemale;
+            BirthDay = _birthD;
             Patronomic = patr;
         }
 
@@ -33,7 +38,7 @@ namespace Task_1
                 }
                 else
                 {
-                    throw new ArgumentException("Name cannot be empty.");
+                    throw new ArgumentException("Name cannot be empty or null!");
                 }
             }
         }
@@ -63,22 +68,24 @@ namespace Task_1
             set;
         }
 
+        public bool MaleOrFemale
+        {
+            get;
+            private set;
+        }
+
         public DateTime BirthDay
         {
             get
             {
                 return birthDay;
             }
-            set
+            private set
             {
-                if (value > DateTime.Now && (value.Year - DateTime.Now.Year) < 100)
+                birthDay = value;
+                if (value > DateTime.Now && Age < 100)
                 {
                     throw new ArgumentException("Wrong date!");
-                }
-                else
-                {
-
-                    birthDay = value;
                 }
             }
         }
@@ -87,9 +94,13 @@ namespace Task_1
         {
             get
             {
-                //DateTime.Today.Ticks
-                return 6;
-                
+                DateTime now = DateTime.Now;
+                int age = now.Year - birthDay.Year;
+                if (now.Month > birthDay.Month || (now.Month == birthDay.Month && now.Day < birthDay.Day))
+                {
+                    age--;
+                }
+                return age;
             }
         }
     }
