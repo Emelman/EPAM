@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ServiceExtension;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,8 +9,8 @@ namespace Task_1
 {
     class User
     {
-        public static uint pensionerAge = 65;
-        public static uint adultHumanAge = 18;
+        public static uint PensionerAge = 65;
+        public static uint AdultHumanAge = 18;
 
         string name;
         string surname;
@@ -100,7 +101,7 @@ namespace Task_1
                 {
                     age--;
                 }
-                return age;
+                return age = DateUtils.DateDifference(DateTime.Now, BirthDay);
             }
         }
     }

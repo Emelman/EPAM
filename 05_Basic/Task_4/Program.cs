@@ -17,7 +17,9 @@ namespace Task_4
             MyString line2 = new MyString(badWord);
 
             MyString goodLine = line + line2;
-            goodLine.ToString();
+
+            Console.WriteLine("Substruct line - {0}", goodLine.ToString());
+            Console.ReadKey();
 
 
         }

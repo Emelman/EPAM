@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ServiceExtension;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,16 +11,12 @@ namespace Task_1
     {
 
         DateTime hireDate;
-        string appointment;
         double salary;
+        J appointment;
 
-        public Employee(string _name, string _surName, DateTime _birthD, bool _maleFemale) : base(_name, _surName, _maleFemale, _birthD)
-        {
-            Hired = false;
-            PermissibleEmployee();
-        }
-
-        public void InitEmployee(string app, double _salary, DateTime _hired)
+        public Employee(string _name, string _surName, DateTime _birthD, 
+            bool _maleFemale, J app, double _salary, DateTime _hired) 
+            : base(_name, _surName, _maleFemale, _birthD)
         {
             Hired = true;
             HireDate = _hired;
@@ -28,26 +25,23 @@ namespace Task_1
             OnVacation = false;
         }
 
-        public void dismissedEmployee()
+        public void DismissedEmployee()
         {
             Hired = false;
-            Appointment = AllCompanyAppointments.Dismissed;
+            Appointment = J.Dismissed;
             Salary = 0;
         }
 
-        private void PermissibleEmployee()
+        private bool PermissibleEmployee()
         {
-            if (Age < User.pensionerAge && Age < User.adultHumanAge)
-            {
-                throw new ArgumentException("do not satisfy staff requirements!");
-            }
+            return (Age >= User.PensionerAge && Age < User.AdultHumanAge);
         }
 
-        public TimeSpan WorkExpirience
+        public int WorkExpirience
         {
             get
             {
-                return DateTime.Now.Subtract(HireDate);
+                return DateUtils.DateDifference(DateTime.Now, HireDate);
             }
         }
 
@@ -61,18 +55,22 @@ namespace Task_1
             }
             private set
             {
-                if (value >= BecomeAdult)
+                if (!PermissibleEmployee())
+                {
+                    throw new ArgumentException("do not satisfy staff requirements!");
+                }
+                if (value < DateTime.Now)
                 {
                     hireDate = value;
                 }
                 else
                 {
-                    throw new ArgumentException("To early for work!)");
+                    throw new ArgumentException("Wrong hire date!");
                 }
             }
         }
 
-        public string Appointment
+        public J Appointment
         {
             get
             {
@@ -82,15 +80,15 @@ namespace Task_1
             {
                 switch (value)
                 {
-                    case AllCompanyAppointments.Cleaner:
+                    case J.Cleaner:
                         break;
-                    case AllCompanyAppointments.Security:
+                    case J.Security:
                         break;
-                    case AllCompanyAppointments.Manager:
+                    case J.Manager:
                         break;
-                    case AllCompanyAppointments.Programmer:
+                    case J.Programmer:
                         break;
-                    default:
+                    case J.Dismissed:
                         throw new ArgumentException("Wrong appointment");
                 }
                 appointment = value;

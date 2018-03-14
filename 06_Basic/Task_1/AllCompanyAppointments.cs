@@ -6,7 +6,16 @@ using System.Threading.Tasks;
 
 namespace Task_1
 {
-    class AllCompanyAppointments
+    enum J
+    {
+        Cleaner,
+        Security,
+        Manager,
+        Programmer,
+        Dismissed
+    }
+
+    class AllCompanyAppointments 
     {
         public const string Cleaner = "cleaner";
         public const string Security = "security";
