@@ -4,15 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Task_1
+namespace Interfaces
 {
-    class Program
+    public interface ISeries
     {
-        static void Main(string[] args)
-        {
-            
-
-
-        }
+        double GetCurrent();
+        bool MoveNext();
+        void Reset();
     }
 }

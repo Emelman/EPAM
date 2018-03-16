@@ -4,15 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Task_1
+namespace Interfaces
 {
-    class Program
+    public interface IIndexable : ISeries
     {
-        static void Main(string[] args)
-        {
-            
-
-
-        }
+        double this[int index] { get; }
     }
 }
