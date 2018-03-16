@@ -15,7 +15,7 @@ namespace Task_3
         public List(double[] _series)
         {
             series = _series;
-            currentIndex = -1;
+            currentIndex = 0;
         }
 
         public double this[int index]
@@ -32,6 +32,7 @@ namespace Task_3
 
         public double GetCurrent()
         {
+            if (currentIndex < 0) return series[0];
             return series[currentIndex];
         }
 

@@ -20,8 +20,10 @@ namespace Task_3
             {
                 Console.WriteLine(newList.GetCurrent());
             }
-            
 
+            PrintSeries(newList);
+
+            Console.ReadKey();
         }
 
         static double[] GenerateDouble(int Leng)
@@ -36,14 +38,12 @@ namespace Task_3
 
         static void PrintSeries(ISeries series)
         {
-            series.Reset();
+            //series.Reset();
             for (int i = 0; i < 10; i++)
             {
                 Console.WriteLine(series.GetCurrent());
                 series.MoveNext();
             }
         }
-
-
     }
 }
