@@ -19,7 +19,7 @@ namespace Utils
         {
             T[] toRetun = new T[_arX.Length + _arY.Length];
             _arX.CopyTo(toRetun, 0);
-            _arY.CopyTo(toRetun, GetLastIndex(_arX));
+            _arY.CopyTo(toRetun, _arX.Length);
             return toRetun;
         }
 
@@ -35,6 +35,19 @@ namespace Utils
                 else return i;
             }
             return last;
+        }
+
+        public static int GetArrayLength<T>(T[] _ar)
+        {
+            int count = 0;
+            for (var i = 0; i < _ar.Length; i++)
+            {
+                if (_ar[i] is T)
+                {
+                    count++;
+                }
+            }
+            return count;
         }
 
     }

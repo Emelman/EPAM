@@ -67,7 +67,7 @@ namespace _08_Basic
         {
             get
             {
-                return ArrayUtils.GetLastIndex(arrayHolder);
+                return ArrayUtils.GetArrayLength(arrayHolder);
             }
             private set
             {
@@ -111,7 +111,7 @@ namespace _08_Basic
         public void AddRange(T[] items)
         {
             int index = ArrayUtils.GetLastIndex(arrayHolder);
-            if(index + items.Length >= Capasity)
+            if(Length + items.Length >= Capasity)     // one position reserved
             {
                 arrayHolder = ArrayUtils.ExpandToValue(arrayHolder, items);
             }
@@ -145,6 +145,7 @@ namespace _08_Basic
                 return false;
             }
             arrayHolder[index] = default(T);
+            Length = length - 1;
             return true;
             //T toDell = this[index]; // ask why it doesnt work?
             //toDell = default(T);    // ask why it doesnt work?
