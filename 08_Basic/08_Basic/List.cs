@@ -7,18 +7,18 @@ using System.Threading.Tasks;
 
 namespace Task_3
 {
-    class List : ISeries, IIndexable
+    class List<T> : ISeries<T>, IIndexable<T>
     {
-        private double[] series;
+        private T[] series;
         private int currentIndex;
 
-        public List(double[] _series)
+        public List(T[] _series)
         {
             series = _series;
             currentIndex = 0;
         }
 
-        public double this[int index]
+        public T this[int index]
         {
             get
             {
@@ -30,9 +30,8 @@ namespace Task_3
             }
         }
 
-        public double GetCurrent()
+        public T GetCurrent()
         {
-
             if (currentIndex >= series.Length) Reset();
             if (currentIndex < 0) return series[0];
             return series[currentIndex];
