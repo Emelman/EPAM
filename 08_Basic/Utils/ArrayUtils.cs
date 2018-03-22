@@ -15,7 +15,7 @@ namespace Utils
             return temp;
         }
 
-        public static T[] ExpandToValue<T>(T[] _arX, T[] _arY)
+        public static T[] ExpandToArrayLengthSum<T>(T[] _arX, T[] _arY)
         {
             T[] toRetun = new T[_arX.Length + _arY.Length];
             _arX.CopyTo(toRetun, 0);

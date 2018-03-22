@@ -113,7 +113,7 @@ namespace _08_Basic
             int index = ArrayUtils.GetLastIndex(arrayHolder);
             if(Length + items.Length >= Capasity)     // one position reserved
             {
-                arrayHolder = ArrayUtils.ExpandToValue(arrayHolder, items);
+                arrayHolder = ArrayUtils.ExpandToArrayLengthSum(arrayHolder, items);
             }
             else
             {
@@ -127,9 +127,20 @@ namespace _08_Basic
 
         public void Incert(T item, int index)
         {
+            T[] part2 = new T[Capasity - index];
+            Array.Copy(arrayHolder, index, part2, 0, part2.Length);
+            T[] part1 = new T[index + 1];
+            Array.Copy(arrayHolder, part1, index);
+            part1[index] = item;
+            arrayHolder = ArrayUtils.ExpandToArrayLengthSum(part1, part2);
+            Length = part1.Length + part2.Length;
+        }
+
+        public void ReplaceAndMoveForward(T item, int index)
+        {
             T toMove = arrayHolder[index];
             int last = ArrayUtils.GetLastIndex(arrayHolder, index + 1);
-            if(last == Capasity)
+            if (last == Capasity)
             {
                 arrayHolder = ArrayUtils.DoubleCapasity(arrayHolder);
             }
