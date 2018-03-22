@@ -4,12 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Task_4
+namespace Task_4.Interfaces
 {
-    class Program
+    internal interface IHeroCanvas
     {
-        static void Main(string[] args)
-        {
-        }
+
+
     }
 }

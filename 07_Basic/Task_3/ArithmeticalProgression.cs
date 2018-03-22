@@ -17,7 +17,7 @@ namespace Task_3
             {
                 return start + step * index;
             }
-        }   
+        }
 
         public ArithmeticalProgression(double _start, double _step)
         {
@@ -25,8 +25,6 @@ namespace Task_3
             step = _step;
             currentIndex = 1;
         }
-
-        
 
         public double GetCurrent()
         {

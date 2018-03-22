@@ -42,11 +42,37 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Program.cs" />
+    <Compile Include="Bonuses\Apple.cs" />
+    <Compile Include="Bonuses\Banana.cs" />
+    <Compile Include="Bonuses\Bonus.cs" />
+    <Compile Include="Bonuses\Cherry.cs" />
+    <Compile Include="BonusProcessor.cs" />
+    <Compile Include="Enemys\Hero.cs" />
+    <Compile Include="HeroProcessor.cs" />
+    <Compile Include="Utils\DrawAnyObject.cs" />
+    <Compile Include="EnemyProcessor.cs" />
+    <Compile Include="Enemys\Bear.cs" />
+    <Compile Include="Enemys\AliveObject.cs" />
+    <Compile Include="Enemys\Rabbit.cs" />
+    <Compile Include="Enemys\Shark.cs" />
+    <Compile Include="Gameplay.cs" />
+    <Compile Include="Figures\Line.cs" />
+    <Compile Include="Interfaces\IBeast.cs" />
+    <Compile Include="Interfaces\IBonus.cs" />
+    <Compile Include="Interfaces\ICanvas.cs" />
+    <Compile Include="Interfaces\IFigure.cs" />
+    <Compile Include="Interfaces\IHeroCanvas.cs" />
+    <Compile Include="MapProcessor.cs" />
+    <Compile Include="Utils\Point.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Figures\Rectangle.cs" />
+    <Compile Include="Figures\Ring.cs" />
+    <Compile Include="Figures\Round.cs" />
+    <Compile Include="Utils\FiguresUtility.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
