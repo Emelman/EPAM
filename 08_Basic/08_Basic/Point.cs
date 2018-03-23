@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace _08_Basic 
 {
-    class Point
+    class Point : IComparable<Point>
     {
         int x;
         int y;
@@ -48,5 +48,22 @@ namespace _08_Basic
             }
         }
 
+        public int CompareTo(Point other)
+        {
+            int sum1 = this.X + this.Y;
+            int sum2 = other.X + other.Y;
+
+            if (sum1 > sum2)
+            {
+                return 1;
+            }
+
+            if (sum1 == sum2)
+            {
+                return 0;
+            }
+
+            return -1;
+        }
     }
 }

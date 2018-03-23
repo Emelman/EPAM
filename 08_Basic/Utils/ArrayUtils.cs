@@ -37,18 +37,5 @@ namespace Utils
             return last;
         }
 
-        public static int GetArrayLength<T>(T[] _ar)
-        {
-            int count = 0;
-            for (var i = 0; i < _ar.Length; i++)
-            {
-                if (_ar[i] is T)
-                {
-                    count++;
-                }
-            }
-            return count;
-        }
-
     }
 }
