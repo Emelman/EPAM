@@ -3,11 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Task_4.Bonuses;
 
 namespace Task_4.Enemys
 {
-    internal class AliveObject 
+    internal abstract class AliveObject
     {
+
         protected int hitPoints;
         protected double speed;
         protected double attackDist;
@@ -16,7 +18,7 @@ namespace Task_4.Enemys
         protected int size;
         protected Point center;
 
-        public virtual void InitialiseParameters() { }
+        public abstract void InitialiseParameters();
 
     }
 }
