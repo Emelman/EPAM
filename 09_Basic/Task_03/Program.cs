@@ -36,19 +36,18 @@ namespace _09_Basic
             }
 
             string[] anotheBook = book.ToArray();
-            GetAllWordRepetitions(anotheBook);
-
+            GetAllWordRepetitions(book);
         }
-
-        static void GetAllWordRepetitions(string[] _book)
+        static void GetAllWordRepetitions(List<string> _book)
         {
-            for (var i = 0; i < _book.Length; i++)
+            for (var i = 0; i < _book.Count; i++)
             {
                 int count = 0;
-                for (var j = i + 1; j < _book.Length; j++)
+                for (var j = i + 1; j < _book.Count; j++)
                 {
                     if (String.Equals(_book[i], _book[j], StringComparison.OrdinalIgnoreCase))
                     {
+                        _book.RemoveAt(j);
                         count++;
                     }
                 }

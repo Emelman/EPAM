@@ -193,11 +193,6 @@ namespace Task_02
             for (int i = 0; i < Length; i++)
             {
                 yield return arrayHolder[i];
-
-                if (i == Length)
-                {
-                    yield break;
-                }
             }
         }
 
