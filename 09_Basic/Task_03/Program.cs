@@ -28,16 +28,41 @@ namespace _09_Basic
         {
             Console.WriteLine("Create word list from text:");
             List<string> book = new List<string>();
+            Dictionary<string, int> library = new Dictionary<string, int>();
 
             foreach (Match m in Regex.Matches(keyLine, pattern))
             {
-                //Console.WriteLine("'{0}' found at index {1}.", m.Value, m.Index);
                 book.Add(m.Value);
+                if (!library.ContainsKey(m.Value))
+                {
+                    library.Add(m.Value, 0);
+                }
+                //else
+                //{
+                //    library[m.Value]++;
+                //}
             }
 
             string[] anotheBook = book.ToArray();
             GetAllWordRepetitions(book);
+            GetWordsRepetitionsDict(library, book);
         }
+
+        private static void GetWordsRepetitionsDict(Dictionary<string, int> library, List<string> book)
+        {
+            var len = book.Count;
+            for (var i = 0; i < len; i++)
+            {
+                library[book[i]]++;
+            }
+
+            foreach (var m in library)
+            {
+                Console.WriteLine("Word {0} repetitions - {1}", m.Key, m.Value);
+            }
+            Console.ReadKey();
+        }
+
         static void GetAllWordRepetitions(List<string> _book)
         {
             for (var i = 0; i < _book.Count; i++)
