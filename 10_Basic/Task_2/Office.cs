@@ -8,68 +8,62 @@ namespace Task_02
 {
     class Office
     {
-        Person john = new Person("John Danver", true);
-        Person mary = new Person("Mary Scott", false);
-        Person hugo = new Person("Hugo Jonson", true);
-        Person marco = new Person("Marco Polo", true);
-        Person jannet = new Person("Jannet Richrdson", false);
-        private List<Person> people = new List<Person>();
-        private List<Person> myCoworcers;
-        delegate void Message(string name);
+        delegate void GreetDelegate(string name, string pref, DateTime time);
+        delegate void LeaveDelegate(string name, string pref);
+
+        private GreetDelegate greetAll;
+        private LeaveDelegate sayBy;
 
         public Office()
         {
-            myCoworcers = new List<Person>() { john, mary, hugo, marco, jannet };
+            
         }
 
-        public void AddRandomWorker()
+        public void PersonCame(Person p)
         {
-            int index = new Random().Next(myCoworcers.Count);
-            AddPeople(myCoworcers[index]);
-            myCoworcers.Remove(myCoworcers[index]);
+            p.Came += this.PersonCame;
+            // dude.addEventListener('Came', PersonCame);
+            //dude.dispatchEvent('Came');
+            p.Leave += this.PersonLeave;
+            p.OnCame();
         }
 
-        public void RandomPersonGoesAway()
+        public void PersonGoesAway(Person p)
         {
-            int index = new Random().Next(people.Count);
-            Console.WriteLine("{0} leaves workplace.", people[index].Name);
-            people[index].OnLeave();
-            myCoworcers.Add(people[index]);
-            people.Remove(people[index]);
-        }
-
-        private void AddPeople(Person dude)
-        {
-            Console.WriteLine("{0} comes on work.", dude.Name);
-            people.Add(dude);
-            AddListeners(dude);
-            dude.OnCame();
-        }
-
-        private void AddListeners(Person dude)
-        {
-            foreach (var m in people)
-            {
-                if (m != dude)
-                {
-                    dude.Came += m.Greet;
-                    dude.Leave += m.TellGoodbye;
-                }
-            }
+            p.OnLeave();
         }
 
         private void RemoveListeners(Person dude)
         {
-            foreach (var m in people)
+            dude.Came -= PersonCame;
+            dude.Leave -= PersonLeave;
+        }
+
+        private void PersonCame(Person p, DateTime d)
+        {
+            Console.WriteLine("{0} comes on work.", p.Name);
+            if (greetAll != null)
             {
-                if (m != dude)
-                {
-                    dude.Came -= m.Greet;
-                    dude.Leave -= m.TellGoodbye;
-                }
+                greetAll(p.Name, "", d);
+            }
+
+            greetAll += p.Greet;
+            sayBy += p.TellGoodbye;
+        }
+
+        private void PersonLeave(Person p)
+        {
+            Console.WriteLine("{0} leaves workplace.", p.Name);
+
+            greetAll -= p.Greet;
+            sayBy -= p.TellGoodbye;
+            RemoveListeners(p);
+
+            if (sayBy != null)
+            {
+                sayBy(p.Name, "");
             }
         }
 
-        
     }
 }

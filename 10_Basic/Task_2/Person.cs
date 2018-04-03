@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace Task_02
 {
-    public delegate void GreetMessage(string name, string handling);
-    public delegate void LeaveMessage(string name, string handling);
-    
+    public delegate void GreetMessage(Person person, DateTime time);
+    public delegate void LeaveMessage(Person person);
+
     public class Person
     {
         string name;
@@ -51,11 +51,21 @@ namespace Task_02
             }
         }
 
-        public bool Male { get => male; set => male = value; }
-
-        public void Greet(string anotherPerson, string handle)
+        public bool Male
         {
-            switch(CompareTime())
+            get
+            {
+                return male;
+            }
+            set
+            {
+                male = value;
+            }
+        }
+
+        public void Greet(string anotherPerson, string handle, DateTime time)
+        {
+            switch (CompareTime(time))
             {
                 case 0:
                     Console.WriteLine("'Good morning, {2} {0}!', - {1} said.", anotherPerson, Name, handle);
@@ -77,18 +87,16 @@ namespace Task_02
             Console.WriteLine("'Goodbye, {2} {0}!', - {1} said.", anotherPerson, Name, handle);
         }
 
-        private int CompareTime()
+        private int CompareTime(DateTime current)
         {
-            DateTime current = new DateTime();
-            DateTime current1 = new DateTime(current.Year, current.Month, current.Day, 13, 0, 0);
             DateTime morning = new DateTime(current.Year, current.Month, current.Day, 12, 0, 0);
             DateTime evening = new DateTime(current.Year, current.Month, current.Day, 17, 0, 0);
 
-            if (current1.CompareTo(evening) == 1)
+            if (current.CompareTo(evening) == 1)
             {
                 return -1;
             }
-            else if(current1.CompareTo(morning) == 1)
+            else if (current.CompareTo(morning) == 1)
             {
                 return 1;
             }
@@ -106,17 +114,17 @@ namespace Task_02
 
         public void OnCame()
         {
-            if(Came != null)
+            if (Came != null)
             {
-                Came(Name, handle());
+                Came(this, DateTime.Now);
             }
         }
 
         public void OnLeave()
         {
-            if(Leave != null)
+            if (Leave != null)
             {
-                Leave(Name, handle());
+                Leave(this);
             }
         }
     }

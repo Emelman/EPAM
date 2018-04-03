@@ -1,14 +1,16 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
-namespace Task_01
+namespace Task_03
 {
-    class Program
+    public delegate void JobWellDone(string sort);
+    public delegate void WakeUp(string sort, int time);
+
+    class ObjectToSort
     {
         private static string pattern = @"[^\W\d][\w'-]*(?<=[a-zA-Z])"; // get words
         private static string keyLine = @"Anyone who's ever seen my work knows I'm a sucker for all things nerdy. 
@@ -25,12 +27,16 @@ namespace Task_01
             and often if you do find something its either an expensive film prop that is profoundly expensive, 
             or a low quality(and equally expensive) representation that can only be bought from specialty sites.";
 
-        private delegate string[] Parcer(string[] arg);
-        private delegate void Handler(string[] arg);
+        //private delegate string[] Parcer(string[] arg);
+        //private delegate void Handler(string[] arg);
+        private static string[] anotheBook;
+        public event JobWellDone Done;
+        public event WakeUp OverSleep;
+        public string myThreadName;
 
-        static void Main(string[] args)
+        public ObjectToSort()
         {
-            Console.WriteLine("Sort string array!");
+            Console.WriteLine("Create to sort string array!");
             CreateStringArray();
         }
 
@@ -48,15 +54,41 @@ namespace Task_01
                 }
             }
 
-            string[] anotheBook = book.ToArray();
-            Handler handle = WordsInLinePrinter;
-            handle(SortStringArray(anotheBook, new MyComparer()));
+            anotheBook = book.ToArray();
         }
 
-        private static string[] SortStringArray(string[] _book)
+        public void StartSort()
         {
-            Array.Sort(_book, (x, y) => (x.Length == y.Length) ? x.CompareTo(y) : x.Length.CompareTo(y.Length));
-            return _book;
+            anotheBook = SortStringArray(anotheBook, new MyComparer());
+            //Console.WriteLine("Sort Ended with: {0}", string.Join("", anotheBook));
+        }
+
+        public void PrintJobDone(string arg)
+        {
+            Console.WriteLine("Thread {0} complete its work!",arg);
+        }
+
+        public void PrintSleepOver(string arg, int time)
+        {
+            Console.WriteLine("Thread {0}, sleep over after {1} miliseconds.", arg, time);
+        }
+
+        public void SortDone()
+        {
+            //Done?.Invoke(myThreadName);
+
+            if (Done != null)
+            {
+                Done(myThreadName);
+            }
+        }
+
+        public void SleepDone(int time)
+        {
+            if (OverSleep != null)
+            {
+                OverSleep(myThreadName, time);
+            }
         }
 
         class MyComparer : IComparer<string>
@@ -82,35 +114,5 @@ namespace Task_01
             return x.Length.CompareTo(y.Length);
         }
 
-        private static void WordsInLinePrinter(string[] _book)
-        {
-            int wordLen = 1;
-            string toPrint = "";
-            foreach (var m in _book)
-            {
-                if (m.Length > wordLen)
-                {
-                    Console.WriteLine("words with length {0}: {1}", wordLen, toPrint);
-                    Console.WriteLine();
-                    wordLen = m.Length;
-                    toPrint = m;
-                }
-                else
-                {
-                    toPrint = toPrint + " " + m;
-                }
-
-            }
-            Console.ReadKey();
-        }
-
-        private static void SimplePrinter(string[] _book)
-        {
-            foreach (var m in _book)
-            {
-                Console.WriteLine("word: {0}", m);
-            }
-            Console.ReadKey();
-        }
     }
 }
