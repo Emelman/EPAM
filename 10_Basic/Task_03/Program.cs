@@ -8,14 +8,12 @@ namespace Task_03
 {
     class Program
     {
-        
-
         static void Main(string[] args)
         {
             ThreadProcessor proc = new ThreadProcessor();
             proc.CreateNewThread(25, "MAtching");
             ThreadProcessor boc = new ThreadProcessor();
-            boc.CreateNewThread(0, "Caller");
+            boc.CreateNewThread(5, "Caller");
             ThreadProcessor poc = new ThreadProcessor();
             poc.CreateNewThread(10, "faller");
 
@@ -27,7 +25,5 @@ namespace Task_03
 
             Console.ReadKey();
         }
-
-     
     }
 }
