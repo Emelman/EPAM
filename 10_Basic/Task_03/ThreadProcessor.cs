@@ -43,9 +43,10 @@ namespace Task_03
         public void LaunchThread()
         {
             Console.WriteLine("Thread {0} Launched!", myThread.Name);
-            if (myThread.IsAlive)
+            if (myThread.ThreadState == ThreadState.Aborted)
             {
                 CreateNewThread(sleepTime, myThread.Name);
+                myThread.Start();
             }
             else
             {

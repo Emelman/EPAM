@@ -15,7 +15,7 @@ namespace Task_03
             ThreadProcessor proc = new ThreadProcessor();
             proc.CreateNewThread(25, "MAtching");
             ThreadProcessor boc = new ThreadProcessor();
-            boc.CreateNewThread(0, "Caller");
+            boc.CreateNewThread(5, "Caller");
             ThreadProcessor poc = new ThreadProcessor();
             poc.CreateNewThread(10, "faller");
 
