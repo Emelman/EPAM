@@ -11,11 +11,11 @@ namespace Task_03
         static void Main(string[] args)
         {
             ThreadProcessor proc = new ThreadProcessor();
-            proc.CreateNewThread(25, "MAtching");
+            proc.CreateNewThread(2500, "MAtching");
             ThreadProcessor boc = new ThreadProcessor();
-            boc.CreateNewThread(5, "Caller");
+            boc.CreateNewThread(0, "Caller");
             ThreadProcessor poc = new ThreadProcessor();
-            poc.CreateNewThread(10, "faller");
+            poc.CreateNewThread(1000, "faller");
 
             proc.LaunchThread();
             boc.LaunchThread();

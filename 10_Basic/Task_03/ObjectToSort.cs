@@ -60,7 +60,7 @@ namespace Task_03
         public void StartSort()
         {
             anotheBook = SortStringArray(anotheBook, new MyComparer());
-            //Console.WriteLine("Sort Ended with: {0}", string.Join("", anotheBook));
+            SortDone();
         }
 
         public void PrintJobDone(string arg)
@@ -73,7 +73,7 @@ namespace Task_03
             Console.WriteLine("Thread {0}, sleep over after {1} miliseconds.", arg, time);
         }
 
-        public void SortDone()
+        private void SortDone()
         {
             //Done?.Invoke(myThreadName);
 

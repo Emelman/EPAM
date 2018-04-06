@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Task_1
 {
-    class User
+    class User : IEquatable<User>
     {
         public static uint PensionerAge = 65;
         public static uint AdultHumanAge = 18;
@@ -103,6 +103,15 @@ namespace Task_1
                 }
                 return age = DateUtils.DateDifference(DateTime.Now, BirthDay);
             }
+        }
+
+        public bool Equals(User other)
+        {
+            if(other == null)
+            {
+                return false;
+            }
+            return true;
         }
     }
 }

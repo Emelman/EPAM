@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Task_1
 {
-    class Employee : User
+    class Employee : User, IEquatable<Employee>
     {
 
         DateTime hireDate;
@@ -35,6 +35,16 @@ namespace Task_1
         private bool PermissibleEmployee()
         {
             return (Age >= User.PensionerAge && Age < User.AdultHumanAge);
+        }
+
+        public bool Equals(Employee other)
+        {
+            if (!base.Equals(other)) return false;
+            if (Name == other.Name && Appointment == other.Appointment && HireDate == other.HireDate)
+            {
+                return true;
+            }
+            return false;
         }
 
         public int WorkExpirience

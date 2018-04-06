@@ -58,6 +58,7 @@ namespace Task_03
         {
             Console.WriteLine("Thread {0} Terminated!", myThread.Name);
             myThread.Abort();
+            myThread.Join();
         }
 
 
@@ -65,12 +66,11 @@ namespace Task_03
         {
             startSleep(sleepTime);
             comparer.SleepDone(sleepTime);
-            
             if (work != null)
             {
                 work();
             }
-            comparer.SortDone();
+            
         }
 
         
