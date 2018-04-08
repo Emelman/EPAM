@@ -10,6 +10,12 @@ namespace Task_01
     {
         static void Main(string[] args)
         {
+            Console.WriteLine("Start programm!");
+
+            Loader mc = new Loader();
+            mc.LoadSpecificFile();
+
+            Console.ReadKey();
         }
     }
 }
