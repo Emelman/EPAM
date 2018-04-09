@@ -18,7 +18,7 @@ namespace Task_01
         {
             List<int> numbers = new List<int>();
             DirectoryInfo nDir = new DirectoryInfo(Environment.CurrentDirectory);
-            IEnumerable<FileInfo> temp = nDir.EnumerateFiles("disposable*.txt", SearchOption.TopDirectoryOnly);
+            IEnumerable<FileInfo> temp = nDir.EnumerateFiles("disp*.txt", SearchOption.TopDirectoryOnly);
 
             var fs = new FileStream(temp.Last().FullName, FileMode.Open, FileAccess.Read, FileShare.Read);
             using (StreamReader file = new StreamReader(fs)) //File.OpenText(last.FullName))
