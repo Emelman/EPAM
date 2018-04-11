@@ -31,17 +31,7 @@ namespace Task_02
                 string date = cur.ToString("yyyyMMddHHmmss");
                 DirectoryInfo subFolder = new DirectoryInfo(Path.Combine(saveFolder.FullName, date));
                 subFolder.Create();
-
-                foreach (var file in Directory.GetFiles(sourceDir, "*.txt", SearchOption.TopDirectoryOnly))
-                {
-                    var destFile = Path.Combine(subFolder.FullName, Path.GetFileName(file));
-                    File.Copy(file, destFile);
-                }
-                foreach (var directory in Directory.GetDirectories(sourceDir, "*", SearchOption.TopDirectoryOnly))
-                {
-                    Directory.CreateDirectory(Path.Combine(subFolder.FullName, Path.GetFileName(directory)));
-                    CopyFilesToDir(directory, Path.Combine(subFolder.FullName, Path.GetFileName(directory)));
-                }
+                CopyFilesToDir(sourceDir, subFolder.FullName);
             }
             catch (Exception e)
             {
@@ -61,18 +51,8 @@ namespace Task_02
             }
             try
             {
-                DeleteAllFiles(sourceDir);
-                var destination = Path.Combine(saveFolder.FullName, toLoad);
-                var dirr = Directory.GetFiles(destination, "*.txt", SearchOption.TopDirectoryOnly);
-                foreach (var file in dirr)  /// , @"**\*.txt"
-                {
-                    File.Copy(file, Path.Combine(sourceDir, Path.GetFileName(file)));
-                }
-                foreach (var directory in Directory.GetDirectories(destination, "*", SearchOption.TopDirectoryOnly))
-                {
-                    Directory.CreateDirectory(Path.Combine(sourceDir, Path.GetFileName(directory)));
-                    CopyFilesToDir(directory, Path.Combine(sourceDir, Path.GetFileName(directory)));
-                }
+                DeleteAllFiles(sourceDir);                
+                CopyFilesToDir(Path.Combine(saveFolder.FullName, toLoad), sourceDir);
             }
             catch (Exception e)
             {
