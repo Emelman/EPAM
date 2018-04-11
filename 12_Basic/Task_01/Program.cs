@@ -13,7 +13,7 @@ namespace Task_01
             Console.WriteLine("Start programm!");
 
             Loader mc = new Loader();
-            mc.LoadSpecificFile();
+            mc.LoadFile();
 
             Console.ReadKey();
         }

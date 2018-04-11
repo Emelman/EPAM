@@ -13,6 +13,11 @@ namespace Ms_Example
         static void Main(string[] args)
         {
             Run();
+
+            DirectoryInfo dir = new DirectoryInfo("");
+            dir.Create();
+            DirectoryInfo second = Directory.CreateDirectory("");
+
         }
 
         [PermissionSet(SecurityAction.Demand, Name = "FullTrust")]

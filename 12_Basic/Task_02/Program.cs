@@ -7,11 +7,13 @@ using System.Threading.Tasks;
 
 namespace Task_02
 {
+    [PermissionSet(SecurityAction.Demand, Name = "FullTrust")]
     class Program
     {
+
         static void Main(string[] args)
         {
-            Console.WriteLine("Choose programm state - to watch or to load(1 or 2):");
+            ConsoleCaller.WriteSimpleLine("Choose programm state - to watch or to load(1 or 2):");
 
             BigBrother eay = new BigBrother(@"C:\Users\Emelman\source\repos\EPAM\12_Basic\Task_02\folderToWatch");
             int key;
@@ -19,17 +21,27 @@ namespace Task_02
             switch (key)
             {
                 case 1:
+                    ConsoleCaller.WriteSimpleLine("Start to Observe");
                     eay.CreateObserver();
                     break;
                 case 2:
-                    eay.LoadSavedState();
+                    ConsoleCaller.WriteSimpleLine("Please, print date you seek. Format - yyyyMMddHHmmss - year month day hour minutes seconds");
+                    string toLoad = ConsoleCaller.ReadSimpleLine();
+                    DateTime dt;
+                    while (!DateTime.TryParseExact(toLoad, "yyyyMMddHHmmss", null, System.Globalization.DateTimeStyles.None, out dt))
+                    {
+                        ConsoleCaller.WriteSimpleLine("Invalid date, please try again. Pattern is yyyyMMddHHmmss");
+                        toLoad = ConsoleCaller.ReadSimpleLine();
+                    }
+                    eay.LoadSavedState(toLoad);
                     break;
                 default:
-                    Console.WriteLine("Dont have such option!");
+                    ConsoleCaller.WriteSimpleLine("Dont have such option!");
                     break;
             }
 
-            Console.ReadKey();
+            ConsoleCaller.WriteSimpleLine("Press \'q\' to quit the sample.");
+            while (Console.Read() != 'q') ;
         }
     }
 }
