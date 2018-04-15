@@ -10,8 +10,14 @@ namespace Ms_Example
 {
     class Program
     {
+
+        enum Color { White, Red, Green, Blue, Orange };
+
         static void Main(string[] args)
         {
+            //var b = new[] { "hello", null, "world" };
+            //int[] someArray = new int[4] { 1, 2, 3, 4 };
+
             Run();
 
             DirectoryInfo dir = new DirectoryInfo("");
