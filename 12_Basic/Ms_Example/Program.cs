@@ -5,14 +5,51 @@ using System.Linq;
 using System.Security.Permissions;
 using System.Text;
 using System.Threading.Tasks;
+using Task_3;
 
 namespace Ms_Example
 {
     class Program
     {
+
+        public enum Color { White, Red, Green, Blue, Orange };
         static void Main(string[] args)
         {
+            
+
+            int x = 4;
+
+            Point pt = new Point(x, x);
+            Point pt2 = new Point(10, 10);
+            pt = pt2;
+            pt2.X = 23;
+            x = 123;
+            Console.WriteLine(x + " " + pt.X);
+
+
+            int a = 0;
+            decimal b = 0;
+            double c = 0.0;
+            Console.WriteLine(a == b);
+            Console.WriteLine(a.Equals(b));
+            Console.WriteLine(a == c);
+            Console.WriteLine(a.Equals(c));
+
+            
+
+            Color eCount = Color.Blue;
+            
+            Console.WriteLine(eCount);
+            Console.WriteLine(eCount.ToString());
+            Console.WriteLine(eCount.ToString("D"));
+            Console.WriteLine(eCount.ToString("G"));
+
+
+
+
+
             Run();
+
 
             DirectoryInfo dir = new DirectoryInfo("");
             dir.Create();

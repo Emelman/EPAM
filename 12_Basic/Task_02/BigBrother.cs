@@ -64,17 +64,16 @@ namespace Task_02
                 if (e.ChangeType == WatcherChangeTypes.Created)
                 {
                     ConsoleCaller.WriteSimpleLine("New File cretaed!");
-                    ConsoleCaller.WriteSimpleLine("File: " + e.FullPath + " " + e.ChangeType);
                 }
                 else if (e.ChangeType == WatcherChangeTypes.Changed)
                 {
                     ConsoleCaller.WriteSimpleLine("Some thing changed!");
-                    ConsoleCaller.WriteSimpleLine("File: " + e.FullPath + " " + e.ChangeType);
                 }
                 else if (e.ChangeType == WatcherChangeTypes.Deleted)
                 {
                     ConsoleCaller.WriteSimpleLine("File deleted!");
                 }
+                ConsoleCaller.WriteSimpleLine("File: " + e.FullPath + " " + e.ChangeType);
                 save.CreateSaveState(dir.FullName);
             }
         }

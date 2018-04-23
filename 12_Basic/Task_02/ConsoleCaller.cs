@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Task_02
 {
-    public static class ConsoleCaller
+    public static class ConsoleCaller 
     {
         public static void WriteSimpleLine(string line)
         {
@@ -22,6 +22,5 @@ namespace Task_02
         {
             return Console.ReadKey();
         }
-
     }
 }
