@@ -70,7 +70,6 @@ namespace Task_03
             {
                 work();
             }
-            
         }
 
         
