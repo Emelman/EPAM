@@ -1,4 +1,7 @@
-﻿namespace UsersAndRewards.PL.WinForms
+﻿using System;
+using System.ComponentModel;
+
+namespace UsersAndRewards.PL.WinForms
 {
     partial class UserForm
     {
@@ -28,6 +31,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.usersGrid = new System.Windows.Forms.DataGridView();
             this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -47,7 +51,6 @@
             this.txtAge = new System.Windows.Forms.TextBox();
             this.txtLastName = new System.Windows.Forms.TextBox();
             this.txtFirstName = new System.Windows.Forms.TextBox();
-            this.vScrollBar1 = new System.Windows.Forms.VScrollBar();
             this.ctlStudList = new System.Windows.Forms.TabControl();
             this.regisrToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.editToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -57,11 +60,13 @@
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutProgrammToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.ctrlErrorProvider = new System.Windows.Forms.ErrorProvider(this.components);
             this.tabPage2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.usersGrid)).BeginInit();
             this.ctlStudForm.SuspendLayout();
             this.ctlStudList.SuspendLayout();
             this.menuStrip1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ctrlErrorProvider)).BeginInit();
             this.SuspendLayout();
             // 
             // tabPage2
@@ -71,7 +76,7 @@
             this.tabPage2.Location = new System.Drawing.Point(4, 25);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(550, 182);
+            this.tabPage2.Size = new System.Drawing.Size(559, 190);
             this.tabPage2.TabIndex = 2;
             this.tabPage2.Text = "StudentList";
             // 
@@ -92,7 +97,7 @@
             this.usersGrid.Name = "usersGrid";
             this.usersGrid.RowHeadersVisible = false;
             this.usersGrid.RowTemplate.Height = 24;
-            this.usersGrid.Size = new System.Drawing.Size(544, 176);
+            this.usersGrid.Size = new System.Drawing.Size(553, 184);
             this.usersGrid.TabIndex = 5;
             this.usersGrid.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
@@ -143,12 +148,11 @@
             this.ctlStudForm.Controls.Add(this.txtAge);
             this.ctlStudForm.Controls.Add(this.txtLastName);
             this.ctlStudForm.Controls.Add(this.txtFirstName);
-            this.ctlStudForm.Controls.Add(this.vScrollBar1);
             this.ctlStudForm.Location = new System.Drawing.Point(4, 25);
             this.ctlStudForm.Name = "ctlStudForm";
             this.ctlStudForm.Padding = new System.Windows.Forms.Padding(3);
             this.ctlStudForm.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.ctlStudForm.Size = new System.Drawing.Size(572, 206);
+            this.ctlStudForm.Size = new System.Drawing.Size(559, 190);
             this.ctlStudForm.TabIndex = 0;
             this.ctlStudForm.Text = "StudentForm";
             // 
@@ -158,6 +162,7 @@
             this.pikerBirthday.Name = "pikerBirthday";
             this.pikerBirthday.Size = new System.Drawing.Size(289, 22);
             this.pikerBirthday.TabIndex = 9;
+            this.pikerBirthday.ValueChanged += new System.EventHandler(this.pikerBirthday_ValueChanged);
             // 
             // btnCancel
             // 
@@ -233,6 +238,9 @@
             this.txtLastName.Size = new System.Drawing.Size(289, 22);
             this.txtLastName.TabIndex = 2;
             this.txtLastName.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.txtLastName.TextChanged += new System.EventHandler(this.txtLastName_Changed);
+            this.txtLastName.Validating += new System.ComponentModel.CancelEventHandler(this.txtLastName_Validating);
+            this.txtLastName.Validated += new System.EventHandler(this.txtLastName_Validated);
             // 
             // txtFirstName
             // 
@@ -241,13 +249,9 @@
             this.txtFirstName.Size = new System.Drawing.Size(289, 22);
             this.txtFirstName.TabIndex = 1;
             this.txtFirstName.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            // 
-            // vScrollBar1
-            // 
-            this.vScrollBar1.Location = new System.Drawing.Point(726, 3);
-            this.vScrollBar1.Name = "vScrollBar1";
-            this.vScrollBar1.Size = new System.Drawing.Size(21, 255);
-            this.vScrollBar1.TabIndex = 0;
+            this.txtFirstName.TextChanged += new System.EventHandler(this.txtFirstName_TextChanged);
+            this.txtFirstName.Validating += new System.ComponentModel.CancelEventHandler(this.txtFirstName_Validating);
+            this.txtFirstName.Validated += new System.EventHandler(this.txtFirstName_Validated);
             // 
             // ctlStudList
             // 
@@ -259,7 +263,7 @@
             this.ctlStudList.Location = new System.Drawing.Point(0, 39);
             this.ctlStudList.Name = "ctlStudList";
             this.ctlStudList.SelectedIndex = 0;
-            this.ctlStudList.Size = new System.Drawing.Size(580, 235);
+            this.ctlStudList.Size = new System.Drawing.Size(567, 219);
             this.ctlStudList.TabIndex = 0;
             // 
             // regisrToolStripMenuItem
@@ -321,15 +325,20 @@
             this.helpToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(580, 36);
+            this.menuStrip1.Size = new System.Drawing.Size(567, 36);
             this.menuStrip1.TabIndex = 2;
             this.menuStrip1.Text = "menuStrip1";
+            // 
+            // ctrlErrorProvider
+            // 
+            this.ctrlErrorProvider.BlinkStyle = System.Windows.Forms.ErrorBlinkStyle.NeverBlink;
+            this.ctrlErrorProvider.ContainerControl = this;
             // 
             // UserForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(580, 275);
+            this.ClientSize = new System.Drawing.Size(567, 259);
             this.Controls.Add(this.menuStrip1);
             this.Controls.Add(this.ctlStudList);
             this.MainMenuStrip = this.menuStrip1;
@@ -343,6 +352,7 @@
             this.ctlStudList.ResumeLayout(false);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ctrlErrorProvider)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -351,7 +361,6 @@
         #endregion
         private System.Windows.Forms.TabPage tabPage2;
         private System.Windows.Forms.TabPage ctlStudForm;
-        private System.Windows.Forms.VScrollBar vScrollBar1;
         private System.Windows.Forms.TabControl ctlStudList;
         private System.Windows.Forms.Label lblBirthDay;
         private System.Windows.Forms.Label lblLastName;
@@ -378,6 +387,7 @@
         private System.Windows.Forms.ToolStripMenuItem helpToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem aboutProgrammToolStripMenuItem;
         private System.Windows.Forms.MenuStrip menuStrip1;
+        private System.Windows.Forms.ErrorProvider ctrlErrorProvider;
     }
 }
 
