@@ -47,7 +47,6 @@
             this.txtAge = new System.Windows.Forms.TextBox();
             this.txtLastName = new System.Windows.Forms.TextBox();
             this.txtFirstName = new System.Windows.Forms.TextBox();
-            this.vScrollBar1 = new System.Windows.Forms.VScrollBar();
             this.ctlStudList = new System.Windows.Forms.TabControl();
             this.regisrToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.editToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -68,10 +67,11 @@
             // 
             this.tabPage2.BackColor = System.Drawing.Color.LightGray;
             this.tabPage2.Controls.Add(this.usersGrid);
-            this.tabPage2.Location = new System.Drawing.Point(4, 25);
+            this.tabPage2.Location = new System.Drawing.Point(4, 22);
+            this.tabPage2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(550, 182);
+            this.tabPage2.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tabPage2.Size = new System.Drawing.Size(417, 151);
             this.tabPage2.TabIndex = 2;
             this.tabPage2.Text = "StudentList";
             // 
@@ -88,11 +88,12 @@
             this.Birthday,
             this.Rewards});
             this.usersGrid.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.usersGrid.Location = new System.Drawing.Point(3, 3);
+            this.usersGrid.Location = new System.Drawing.Point(2, 2);
+            this.usersGrid.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.usersGrid.Name = "usersGrid";
             this.usersGrid.RowHeadersVisible = false;
             this.usersGrid.RowTemplate.Height = 24;
-            this.usersGrid.Size = new System.Drawing.Size(544, 176);
+            this.usersGrid.Size = new System.Drawing.Size(413, 147);
             this.usersGrid.TabIndex = 5;
             this.usersGrid.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
@@ -143,27 +144,29 @@
             this.ctlStudForm.Controls.Add(this.txtAge);
             this.ctlStudForm.Controls.Add(this.txtLastName);
             this.ctlStudForm.Controls.Add(this.txtFirstName);
-            this.ctlStudForm.Controls.Add(this.vScrollBar1);
-            this.ctlStudForm.Location = new System.Drawing.Point(4, 25);
+            this.ctlStudForm.Location = new System.Drawing.Point(4, 22);
+            this.ctlStudForm.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.ctlStudForm.Name = "ctlStudForm";
-            this.ctlStudForm.Padding = new System.Windows.Forms.Padding(3);
+            this.ctlStudForm.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.ctlStudForm.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.ctlStudForm.Size = new System.Drawing.Size(572, 206);
+            this.ctlStudForm.Size = new System.Drawing.Size(417, 151);
             this.ctlStudForm.TabIndex = 0;
             this.ctlStudForm.Text = "StudentForm";
             // 
             // pikerBirthday
             // 
-            this.pikerBirthday.Location = new System.Drawing.Point(210, 60);
+            this.pikerBirthday.Location = new System.Drawing.Point(158, 49);
+            this.pikerBirthday.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.pikerBirthday.Name = "pikerBirthday";
-            this.pikerBirthday.Size = new System.Drawing.Size(289, 22);
+            this.pikerBirthday.Size = new System.Drawing.Size(218, 20);
             this.pikerBirthday.TabIndex = 9;
             // 
             // btnCancel
             // 
-            this.btnCancel.Location = new System.Drawing.Point(453, 144);
+            this.btnCancel.Location = new System.Drawing.Point(340, 117);
+            this.btnCancel.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Size = new System.Drawing.Size(91, 32);
+            this.btnCancel.Size = new System.Drawing.Size(68, 26);
             this.btnCancel.TabIndex = 2;
             this.btnCancel.Text = "Cancel";
             this.btnCancel.UseVisualStyleBackColor = true;
@@ -172,27 +175,30 @@
             // lblAge
             // 
             this.lblAge.AutoSize = true;
-            this.lblAge.Location = new System.Drawing.Point(49, 89);
+            this.lblAge.Location = new System.Drawing.Point(37, 72);
+            this.lblAge.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblAge.Name = "lblAge";
-            this.lblAge.Size = new System.Drawing.Size(33, 17);
+            this.lblAge.Size = new System.Drawing.Size(26, 13);
             this.lblAge.TabIndex = 7;
             this.lblAge.Text = "Age";
             // 
             // lblBirthDay
             // 
             this.lblBirthDay.AutoSize = true;
-            this.lblBirthDay.Location = new System.Drawing.Point(49, 64);
+            this.lblBirthDay.Location = new System.Drawing.Point(37, 52);
+            this.lblBirthDay.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblBirthDay.Name = "lblBirthDay";
-            this.lblBirthDay.Size = new System.Drawing.Size(60, 17);
+            this.lblBirthDay.Size = new System.Drawing.Size(45, 13);
             this.lblBirthDay.TabIndex = 6;
             this.lblBirthDay.Text = "Birthday";
             this.lblBirthDay.Click += new System.EventHandler(this.label3_Click);
             // 
             // btnOk
             // 
-            this.btnOk.Location = new System.Drawing.Point(339, 144);
+            this.btnOk.Location = new System.Drawing.Point(254, 117);
+            this.btnOk.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnOk.Name = "btnOk";
-            this.btnOk.Size = new System.Drawing.Size(95, 32);
+            this.btnOk.Size = new System.Drawing.Size(71, 26);
             this.btnOk.TabIndex = 1;
             this.btnOk.Text = "OK";
             this.btnOk.UseVisualStyleBackColor = true;
@@ -201,9 +207,10 @@
             // lblLastName
             // 
             this.lblLastName.AutoSize = true;
-            this.lblLastName.Location = new System.Drawing.Point(49, 38);
+            this.lblLastName.Location = new System.Drawing.Point(37, 31);
+            this.lblLastName.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblLastName.Name = "lblLastName";
-            this.lblLastName.Size = new System.Drawing.Size(76, 17);
+            this.lblLastName.Size = new System.Drawing.Size(58, 13);
             this.lblLastName.TabIndex = 5;
             this.lblLastName.Text = "Last Name";
             this.lblLastName.Click += new System.EventHandler(this.label2_Click);
@@ -211,43 +218,40 @@
             // lblFirstName
             // 
             this.lblFirstName.AutoSize = true;
-            this.lblFirstName.Location = new System.Drawing.Point(49, 12);
+            this.lblFirstName.Location = new System.Drawing.Point(37, 10);
+            this.lblFirstName.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblFirstName.Name = "lblFirstName";
-            this.lblFirstName.Size = new System.Drawing.Size(76, 17);
+            this.lblFirstName.Size = new System.Drawing.Size(57, 13);
             this.lblFirstName.TabIndex = 4;
             this.lblFirstName.Text = "First Name";
             this.lblFirstName.Click += new System.EventHandler(this.label1_Click);
             // 
             // txtAge
             // 
-            this.txtAge.Location = new System.Drawing.Point(210, 84);
+            this.txtAge.Location = new System.Drawing.Point(158, 68);
+            this.txtAge.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.txtAge.Name = "txtAge";
-            this.txtAge.Size = new System.Drawing.Size(289, 22);
+            this.txtAge.Size = new System.Drawing.Size(218, 20);
             this.txtAge.TabIndex = 3;
             this.txtAge.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // txtLastName
             // 
-            this.txtLastName.Location = new System.Drawing.Point(210, 36);
+            this.txtLastName.Location = new System.Drawing.Point(158, 29);
+            this.txtLastName.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.txtLastName.Name = "txtLastName";
-            this.txtLastName.Size = new System.Drawing.Size(289, 22);
+            this.txtLastName.Size = new System.Drawing.Size(218, 20);
             this.txtLastName.TabIndex = 2;
             this.txtLastName.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // txtFirstName
             // 
-            this.txtFirstName.Location = new System.Drawing.Point(210, 12);
+            this.txtFirstName.Location = new System.Drawing.Point(158, 10);
+            this.txtFirstName.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.txtFirstName.Name = "txtFirstName";
-            this.txtFirstName.Size = new System.Drawing.Size(289, 22);
+            this.txtFirstName.Size = new System.Drawing.Size(218, 20);
             this.txtFirstName.TabIndex = 1;
             this.txtFirstName.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            // 
-            // vScrollBar1
-            // 
-            this.vScrollBar1.Location = new System.Drawing.Point(726, 3);
-            this.vScrollBar1.Name = "vScrollBar1";
-            this.vScrollBar1.Size = new System.Drawing.Size(21, 255);
-            this.vScrollBar1.TabIndex = 0;
             // 
             // ctlStudList
             // 
@@ -256,10 +260,11 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.ctlStudList.Controls.Add(this.ctlStudForm);
             this.ctlStudList.Controls.Add(this.tabPage2);
-            this.ctlStudList.Location = new System.Drawing.Point(0, 39);
+            this.ctlStudList.Location = new System.Drawing.Point(0, 32);
+            this.ctlStudList.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.ctlStudList.Name = "ctlStudList";
             this.ctlStudList.SelectedIndex = 0;
-            this.ctlStudList.Size = new System.Drawing.Size(580, 235);
+            this.ctlStudList.Size = new System.Drawing.Size(425, 177);
             this.ctlStudList.TabIndex = 0;
             // 
             // regisrToolStripMenuItem
@@ -270,33 +275,33 @@
             this.editToolStripMenuItem1,
             this.exitToolStripMenuItem2});
             this.regisrToolStripMenuItem.Name = "regisrToolStripMenuItem";
-            this.regisrToolStripMenuItem.Size = new System.Drawing.Size(54, 32);
+            this.regisrToolStripMenuItem.Size = new System.Drawing.Size(37, 20);
             this.regisrToolStripMenuItem.Text = "File";
             this.regisrToolStripMenuItem.Click += new System.EventHandler(this.regisrToolStripMenuItem_Click);
             // 
             // editToolStripMenuItem
             // 
             this.editToolStripMenuItem.Name = "editToolStripMenuItem";
-            this.editToolStripMenuItem.Size = new System.Drawing.Size(173, 32);
+            this.editToolStripMenuItem.Size = new System.Drawing.Size(125, 22);
             this.editToolStripMenuItem.Text = "Register...";
             this.editToolStripMenuItem.Click += new System.EventHandler(this.editToolStripMenuItem_Click);
             // 
             // registerToolStripMenuItem
             // 
             this.registerToolStripMenuItem.Name = "registerToolStripMenuItem";
-            this.registerToolStripMenuItem.Size = new System.Drawing.Size(173, 32);
+            this.registerToolStripMenuItem.Size = new System.Drawing.Size(125, 22);
             this.registerToolStripMenuItem.Text = "Edit...";
             // 
             // editToolStripMenuItem1
             // 
             this.editToolStripMenuItem1.Name = "editToolStripMenuItem1";
-            this.editToolStripMenuItem1.Size = new System.Drawing.Size(173, 32);
+            this.editToolStripMenuItem1.Size = new System.Drawing.Size(125, 22);
             this.editToolStripMenuItem1.Text = "Delete";
             // 
             // exitToolStripMenuItem2
             // 
             this.exitToolStripMenuItem2.Name = "exitToolStripMenuItem2";
-            this.exitToolStripMenuItem2.Size = new System.Drawing.Size(173, 32);
+            this.exitToolStripMenuItem2.Size = new System.Drawing.Size(125, 22);
             this.exitToolStripMenuItem2.Text = "Exit";
             // 
             // helpToolStripMenuItem
@@ -304,13 +309,13 @@
             this.helpToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.aboutProgrammToolStripMenuItem});
             this.helpToolStripMenuItem.Name = "helpToolStripMenuItem";
-            this.helpToolStripMenuItem.Size = new System.Drawing.Size(65, 32);
+            this.helpToolStripMenuItem.Size = new System.Drawing.Size(44, 20);
             this.helpToolStripMenuItem.Text = "Help";
             // 
             // aboutProgrammToolStripMenuItem
             // 
             this.aboutProgrammToolStripMenuItem.Name = "aboutProgrammToolStripMenuItem";
-            this.aboutProgrammToolStripMenuItem.Size = new System.Drawing.Size(244, 32);
+            this.aboutProgrammToolStripMenuItem.Size = new System.Drawing.Size(167, 22);
             this.aboutProgrammToolStripMenuItem.Text = "About programm";
             // 
             // menuStrip1
@@ -321,18 +326,20 @@
             this.helpToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(580, 36);
+            this.menuStrip1.Padding = new System.Windows.Forms.Padding(4, 2, 0, 2);
+            this.menuStrip1.Size = new System.Drawing.Size(425, 24);
             this.menuStrip1.TabIndex = 2;
             this.menuStrip1.Text = "menuStrip1";
             // 
             // UserForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(580, 275);
+            this.ClientSize = new System.Drawing.Size(425, 209);
             this.Controls.Add(this.menuStrip1);
             this.Controls.Add(this.ctlStudList);
             this.MainMenuStrip = this.menuStrip1;
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "UserForm";
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);
@@ -351,7 +358,6 @@
         #endregion
         private System.Windows.Forms.TabPage tabPage2;
         private System.Windows.Forms.TabPage ctlStudForm;
-        private System.Windows.Forms.VScrollBar vScrollBar1;
         private System.Windows.Forms.TabControl ctlStudList;
         private System.Windows.Forms.Label lblBirthDay;
         private System.Windows.Forms.Label lblLastName;
