@@ -14,6 +14,10 @@ namespace UsersAndRewards.PL.WinForms
     public partial class UserForm : Form
     {
         private ILogic logic;
+
+        public string FirstName { get; private set; }
+        public string LastName1 { get; private set; }
+
         public UserForm(ILogic _logic)
         {
             InitializeComponent();
@@ -73,7 +77,11 @@ namespace UsersAndRewards.PL.WinForms
 
         private void button1_Click(object sender, EventArgs e)
         {
-            throw new ArgumentException("Name cannot be empty or null!");
+            if (!ValidateChildren())
+            {
+                DialogResult = DialogResult.None;
+            }
+            //throw new ArgumentException("Name cannot be empty or null!");
             //AddUser();
         }
 
@@ -82,17 +90,57 @@ namespace UsersAndRewards.PL.WinForms
 
         }
 
-        private void button3_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void button4_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+
+        private void Validate(Control ctl, string ctrlValue, string errorMessage, CancelEventArgs e)
+        {
+            if (string.IsNullOrEmpty(ctrlValue))
+            {
+                ctrlErrorProvider.SetError(ctl, errorMessage);
+                e.Cancel = true;
+            }
+            else
+            {
+                ctrlErrorProvider.SetError(txtFirstName, string.Empty);
+                e.Cancel = false;
+            }
+        }
+
+        private void txtFirstName_TextChanged(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void txtFirstName_Validating(object sender, CancelEventArgs e)
+        {
+            Validate(txtFirstName, txtFirstName.Text.Trim(), "Name cannot be empty", e);
+        }
+
+        private void txtFirstName_Validated(object sender, EventArgs e)
+        {
+            FirstName = txtFirstName.Text.Trim();
+        }
+
+        private void txtLastName_Validated(object sender, EventArgs e)
+        {
+            LastName1 = txtLastName.Text.Trim();
+        }
+
+        private void txtLastName_Validating(object sender, CancelEventArgs e)
+        {
+            Validate(txtLastName, txtLastName.Text.Trim(), "Name cannot be empty", e);
+        }
+
+        private void txtLastName_Changed(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void pikerBirthday_ValueChanged(object sender, EventArgs e)
         {
 
         }
