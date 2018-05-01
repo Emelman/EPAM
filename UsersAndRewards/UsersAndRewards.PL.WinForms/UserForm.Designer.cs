@@ -74,10 +74,10 @@ namespace UsersAndRewards.PL.WinForms
             this.tabPage2.BackColor = System.Drawing.Color.LightGray;
             this.tabPage2.Controls.Add(this.usersGrid);
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
-            this.tabPage2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tabPage2.Margin = new System.Windows.Forms.Padding(2);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(559, 190);
+            this.tabPage2.Size = new System.Drawing.Size(559, 193);
             this.tabPage2.TabIndex = 2;
             this.tabPage2.Text = "StudentList";
             // 
@@ -94,12 +94,12 @@ namespace UsersAndRewards.PL.WinForms
             this.Birthday,
             this.Rewards});
             this.usersGrid.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.usersGrid.Location = new System.Drawing.Point(2, 2);
-            this.usersGrid.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.usersGrid.Location = new System.Drawing.Point(3, 3);
+            this.usersGrid.Margin = new System.Windows.Forms.Padding(2);
             this.usersGrid.Name = "usersGrid";
             this.usersGrid.RowHeadersVisible = false;
             this.usersGrid.RowTemplate.Height = 24;
-            this.usersGrid.Size = new System.Drawing.Size(553, 184);
+            this.usersGrid.Size = new System.Drawing.Size(553, 187);
             this.usersGrid.TabIndex = 5;
             this.usersGrid.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
@@ -150,18 +150,18 @@ namespace UsersAndRewards.PL.WinForms
             this.ctlStudForm.Controls.Add(this.txtAge);
             this.ctlStudForm.Controls.Add(this.txtLastName);
             this.ctlStudForm.Controls.Add(this.txtFirstName);
-            this.ctlStudForm.Location = new System.Drawing.Point(4, 25);
+            this.ctlStudForm.Location = new System.Drawing.Point(4, 22);
             this.ctlStudForm.Name = "ctlStudForm";
-            this.ctlStudForm.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.ctlStudForm.Padding = new System.Windows.Forms.Padding(2);
             this.ctlStudForm.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.ctlStudForm.Size = new System.Drawing.Size(559, 190);
+            this.ctlStudForm.Size = new System.Drawing.Size(559, 209);
             this.ctlStudForm.TabIndex = 0;
             this.ctlStudForm.Text = "StudentForm";
             // 
             // pikerBirthday
             // 
             this.pikerBirthday.Location = new System.Drawing.Point(158, 49);
-            this.pikerBirthday.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.pikerBirthday.Margin = new System.Windows.Forms.Padding(2);
             this.pikerBirthday.Name = "pikerBirthday";
             this.pikerBirthday.Size = new System.Drawing.Size(218, 20);
             this.pikerBirthday.TabIndex = 9;
@@ -170,7 +170,7 @@ namespace UsersAndRewards.PL.WinForms
             // btnCancel
             // 
             this.btnCancel.Location = new System.Drawing.Point(340, 117);
-            this.btnCancel.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnCancel.Margin = new System.Windows.Forms.Padding(2);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(68, 26);
             this.btnCancel.TabIndex = 2;
@@ -202,7 +202,7 @@ namespace UsersAndRewards.PL.WinForms
             // btnOk
             // 
             this.btnOk.Location = new System.Drawing.Point(254, 117);
-            this.btnOk.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnOk.Margin = new System.Windows.Forms.Padding(2);
             this.btnOk.Name = "btnOk";
             this.btnOk.Size = new System.Drawing.Size(71, 26);
             this.btnOk.TabIndex = 1;
@@ -235,7 +235,7 @@ namespace UsersAndRewards.PL.WinForms
             // txtAge
             // 
             this.txtAge.Location = new System.Drawing.Point(158, 68);
-            this.txtAge.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtAge.Margin = new System.Windows.Forms.Padding(2);
             this.txtAge.Name = "txtAge";
             this.txtAge.Size = new System.Drawing.Size(218, 20);
             this.txtAge.TabIndex = 3;
@@ -244,7 +244,7 @@ namespace UsersAndRewards.PL.WinForms
             // txtLastName
             // 
             this.txtLastName.Location = new System.Drawing.Point(158, 29);
-            this.txtLastName.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtLastName.Margin = new System.Windows.Forms.Padding(2);
             this.txtLastName.Name = "txtLastName";
             this.txtLastName.Size = new System.Drawing.Size(218, 20);
             this.txtLastName.TabIndex = 2;
@@ -256,7 +256,7 @@ namespace UsersAndRewards.PL.WinForms
             // txtFirstName
             // 
             this.txtFirstName.Location = new System.Drawing.Point(158, 10);
-            this.txtFirstName.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtFirstName.Margin = new System.Windows.Forms.Padding(2);
             this.txtFirstName.Name = "txtFirstName";
             this.txtFirstName.Size = new System.Drawing.Size(218, 20);
             this.txtFirstName.TabIndex = 1;
@@ -273,10 +273,10 @@ namespace UsersAndRewards.PL.WinForms
             this.ctlStudList.Controls.Add(this.ctlStudForm);
             this.ctlStudList.Controls.Add(this.tabPage2);
             this.ctlStudList.Location = new System.Drawing.Point(0, 32);
-            this.ctlStudList.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.ctlStudList.Margin = new System.Windows.Forms.Padding(2);
             this.ctlStudList.Name = "ctlStudList";
             this.ctlStudList.SelectedIndex = 0;
-            this.ctlStudList.Size = new System.Drawing.Size(567, 219);
+            this.ctlStudList.Size = new System.Drawing.Size(567, 235);
             this.ctlStudList.TabIndex = 0;
             // 
             // regisrToolStripMenuItem
@@ -338,7 +338,7 @@ namespace UsersAndRewards.PL.WinForms
             this.helpToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(567, 36);
+            this.menuStrip1.Size = new System.Drawing.Size(567, 24);
             this.menuStrip1.TabIndex = 2;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -351,11 +351,11 @@ namespace UsersAndRewards.PL.WinForms
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(567, 259);
+            this.ClientSize = new System.Drawing.Size(567, 265);
             this.Controls.Add(this.menuStrip1);
             this.Controls.Add(this.ctlStudList);
             this.MainMenuStrip = this.menuStrip1;
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "UserForm";
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);
