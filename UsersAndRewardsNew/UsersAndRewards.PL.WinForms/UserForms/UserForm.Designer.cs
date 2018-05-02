@@ -131,8 +131,7 @@ namespace UsersAndRewards.PL.WinForms.UserForms
             this.rewardList.Name = "rewardList";
             this.rewardList.Size = new System.Drawing.Size(260, 124);
             this.rewardList.TabIndex = 8;
-            //this.rewardList.Validating += new System.ComponentModel.CancelEventHandler(rewardList_Validating);
-            this.rewardList.Validated += new System.EventHandler(RewardList_Validated);
+            this.rewardList.Validated += new System.EventHandler(this.RewardList_Validated);
             // 
             // UserForm
             // 

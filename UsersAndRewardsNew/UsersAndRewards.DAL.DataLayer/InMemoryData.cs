@@ -62,35 +62,25 @@ namespace UsersAndRewards.DAL.DataLayer
 
 		public void DeleteReward(int rewardId)
 		{
-            if (rewards.Count <= rewardId)
-            {
-                throw new IndexOutOfRangeException("There is no reward with such ID!");
-            }
-            
             foreach(var user in users)
             {
-                var usya = user.Rewards.Find(item => item.RewardId == rewards[rewardId].RewardId);
+                var usya = user.Rewards.Find(item => item.RewardId == rewardId);
                 user.Rewards.Remove(usya);
             }
-            rewards.RemoveAt(rewardId);
+            var toDell = rewards.Find(item => item.RewardId == rewardId);
+            rewards.Remove(toDell);
         }
 
 		public void DeleteUser(int userId)
 		{
-			if(users.Count <= userId)
-            {
-                throw new IndexOutOfRangeException("There is no user with such ID!");
-            }
-            users.RemoveAt(userId);
+            var usya = users.Find(item => item.UserId == userId);
+            users.Remove(usya);
 		}
 
 		public Reward GetRewardById(int rewardId)
 		{
-            if(rewards.Count <= rewardId)
-            {
-                throw new IndexOutOfRangeException("Out of Range!");
-            }
-            return rewards.ElementAt(rewardId);
+            var rwrd = rewards.Find(item => item.RewardId == rewardId);
+            return rwrd;
         }
 
 		public List<Reward> GetRewards()
@@ -100,11 +90,8 @@ namespace UsersAndRewards.DAL.DataLayer
 
 		public User GetUserById(int userId)
 		{
-            if (users.Count <= userId)
-            {
-                throw new IndexOutOfRangeException("Out of Range!");
-            }
-            return users.ElementAt(userId);
+            var usya = users.Find(item => item.UserId == userId);
+            return usya;
         }
 
 		public List<User> GetUsers()
@@ -119,7 +106,8 @@ namespace UsersAndRewards.DAL.DataLayer
 
 		public void UpdateUser(User user)
 		{
-			throw new NotImplementedException();
-		}
+            var usya = users.Find(item => item.UserId == user.UserId);
+            usya = user;
+        }
 	}
 }

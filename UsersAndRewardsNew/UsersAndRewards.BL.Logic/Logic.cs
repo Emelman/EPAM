@@ -80,7 +80,7 @@ namespace UsersAndRewards.BL.Logic
 
 		public void UpdateUser(User user)
 		{
-			throw new NotImplementedException();
+            data.UpdateUser(user);
 		}
 	}
 }

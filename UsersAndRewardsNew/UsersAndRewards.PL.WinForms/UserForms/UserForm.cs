@@ -28,6 +28,16 @@ namespace UsersAndRewards.PL.WinForms.UserForms
             InitCheckedBoxList();
 		}
 
+        public UserForm(List<Reward> _rewards, User _user) // load user to change 
+        {
+            rewards = _rewards;
+            InitializeComponent();
+            InitCheckedBoxList();
+            txtFirstName.Text = _user.FirstName;
+            txtLastName.Text = _user.LastName;
+            ctlBirthdate.Value = _user.Birthdate;
+        }
+
         private void InitCheckedBoxList()
         {
             for (int i = 0; i < rewards.Count; i++)
@@ -37,23 +47,12 @@ namespace UsersAndRewards.PL.WinForms.UserForms
             }
         }
 
-        //private void rewardList_Validating(object sender, CancelEventArgs e)
-        //{
-        //    throw new NotImplementedException();
-        //}
-
         private void RewardList_Validated(object sender, EventArgs e)
         {
             foreach (int indexChecked in rewardList.CheckedIndices)
             {
-                // The indexChecked variable contains the index of the item.
-                //MessageBox.Show("Index#: " + indexChecked.ToString() + ", is checked. Checked state is:" +
-                //            rewardList.GetItemCheckState(indexChecked).ToString() + ".");
-
                 rewardToAdd.Add(rewards[indexChecked]);
             }
-
-            
         }
 
         private void BtnOK_Click(object sender, EventArgs e)

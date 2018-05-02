@@ -79,7 +79,7 @@ namespace UsersAndRewards.Shared
             {
                 return birthdate;
             }
-            private set
+            set
             {
                 birthdate = value;
                 if (value > DateTime.Now || Age > 100)

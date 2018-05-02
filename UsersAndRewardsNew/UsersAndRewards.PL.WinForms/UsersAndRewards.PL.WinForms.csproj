@@ -53,17 +53,35 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RewardForms\DeleteRewardForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RewardForms\DeleteRewardForm.Designer.cs">
+      <DependentUpon>DeleteRewardForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="RewardForms\RewardForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="RewardForms\RewardForm.Designer.cs">
       <DependentUpon>RewardForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="UserForms\RewardToUserForm.cs">
+    <Compile Include="UserForms\DeleteUserForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="UserForms\RewardToUserForm.Designer.cs">
-      <DependentUpon>RewardToUserForm.cs</DependentUpon>
+    <Compile Include="UserForms\DeleteUserForm.Designer.cs">
+      <DependentUpon>DeleteUserForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserForms\ChangeUserForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UserForms\ChangeUserForm.Designer.cs">
+      <DependentUpon>ChangeUserForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserForms\UpdateUserForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UserForms\UpdateUserForm.Designer.cs">
+      <DependentUpon>UpdateUserForm.cs</DependentUpon>
     </Compile>
     <Compile Include="UserForms\UserForm.cs">
       <SubType>Form</SubType>
@@ -83,11 +101,20 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="RewardForms\DeleteRewardForm.resx">
+      <DependentUpon>DeleteRewardForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="RewardForms\RewardForm.resx">
       <DependentUpon>RewardForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UserForms\RewardToUserForm.resx">
-      <DependentUpon>RewardToUserForm.cs</DependentUpon>
+    <EmbeddedResource Include="UserForms\DeleteUserForm.resx">
+      <DependentUpon>DeleteUserForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserForms\ChangeUserForm.resx">
+      <DependentUpon>ChangeUserForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserForms\UpdateUserForm.resx">
+      <DependentUpon>UpdateUserForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserForms\UserForm.resx">
       <DependentUpon>UserForm.cs</DependentUpon>

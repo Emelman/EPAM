@@ -35,15 +35,7 @@ namespace UsersAndRewards.PL.WinForms
 			if (userForm.ShowDialog() == DialogResult.OK)
 			{
 				var user = new User(userForm.FirstName, userForm.LastName,true,userForm.date);
-                //user.Rewards = logic.GetRewards();
-                //userForm.
                 user.Rewards = userForm.rewardToAdd;
-                //foreach (var mc in logic.GetRewards())
-                //{
-                //    user.Rewards.Add(mc);
-                //}
-
-                //user.Rewards.Add(logic.GetRewardById(0));
 				// initialization
 				logic.AddUser(user);
 				UpdateUsersGrid();
@@ -68,18 +60,25 @@ namespace UsersAndRewards.PL.WinForms
 
         private void BtnDelete_Click(object sender, EventArgs e)
 		{
-            if (WarningMessage("Are you sure?", "Warning") == DialogResult.Yes)
+            // remove user
+            var length = logic.GetUsers().Count;
+            if (length <= 0)
             {
-                // remove user
-                var length = logic.GetUsers().Count;
-                if (length <= 0)
+                WarningMessage("There are not any users to delete.", "Warning", MessageBoxButtons.OK);
+            }
+            else
+            {
+                var deleteForm = new DeleteUserForm(logic.GetUsers());
+                if (deleteForm.ShowDialog() == DialogResult.OK)
                 {
-                    WarningMessage("There are no any users to delete.", "Warning", MessageBoxButtons.OK);
-                }
-                else
-                {
-                    logic.DeleteUser(DateUtils.RandomNumber(0, length));
-                    UpdateUsersGrid();
+                    if (WarningMessage("Are you sure?", "Warning") == DialogResult.Yes)
+                    {
+                        for (var i = 0; i < deleteForm.usersToDell.Count; i++)
+                        {
+                            logic.DeleteUser(deleteForm.usersToDell[i].UserId);
+                        }
+                        UpdateUsersGrid();
+                    }
                 }
             }
         }
@@ -100,20 +99,28 @@ namespace UsersAndRewards.PL.WinForms
 
         private void DeleteRewardStripeItem_Click(object sender, EventArgs e)
         {
-            if (WarningMessage("Are you sure?", "Warning") == DialogResult.Yes)
+            // remove reward
+            var length = logic.GetRewards().Count;
+            if (length <= 0)
             {
-                // remove reward
-                var length = logic.GetRewards().Count;
-                if (length <= 0)
+                WarningMessage("There are not any rewards to delete.", "Warning", MessageBoxButtons.OK);
+            }
+            else
+            {
+                var deleteForm = new DeleteRewardForm(logic.GetRewards());
+                if (deleteForm.ShowDialog() == DialogResult.OK)
                 {
-                    WarningMessage("There are no any rewards to delete.", "Warning", MessageBoxButtons.OK);
+                    if (WarningMessage("Are you sure?", "Warning") == DialogResult.Yes)
+                    {
+                        for(var i = 0; i < deleteForm.rewardToDell.Count; i++)
+                        {
+                            logic.DeleteReward(deleteForm.rewardToDell[i].RewardId);
+                        }
+                        UpdateRewardGrid();
+                        UpdateUsersGrid();
+                    }
                 }
-                else
-                {
-                    logic.DeleteReward(DateUtils.RandomNumber(0, length));
-                    UpdateRewardGrid();
-                    UpdateUsersGrid();
-                }
+                    
             }
         }
 
@@ -132,26 +139,31 @@ namespace UsersAndRewards.PL.WinForms
             return res;
         }
 
-        private void rewardUserToolStripMenuItem_Click(object sender, EventArgs e)
+        private void ChangeUserMenuItem_Click(object sender, EventArgs e)
         {
-            var rewardUser = new RewardToUserForm(logic.GetRewards(), logic.GetUsers());
-            if (rewardUser.ShowDialog() == DialogResult.OK)
+            var changeUser = new UpdateUserForm(logic.GetUsers());
+            if (changeUser.ShowDialog() == DialogResult.OK)
             {
-                
-
+                var userForm = new UserForm(logic.GetRewards(), changeUser.usersToUpdate);
+                if (userForm.ShowDialog() == DialogResult.OK)
+                {
+                    var user = changeUser.usersToUpdate;
+                    user.FirstName = userForm.FirstName;
+                    user.LastName = userForm.LastName;
+                    user.Birthdate = userForm.date;
+                    user.Rewards = userForm.rewardToAdd;
+                    logic.UpdateUser(user);
+                    // initialization
+                    UpdateUsersGrid();
+                }
                 //var user = new User(userForm.FirstName, userForm.LastName, true, userForm.date);
-                ////user.Rewards = logic.GetRewards();
+                //user.Rewards = logic.GetRewards();
                 //user.Rewards = new List<Reward>();
                 //user.Rewards.Add(logic.GetRewardById(0));
                 //// initialization
                 //logic.AddUser(user);
                 //UpdateUsersGrid();
             }
-        }
-
-        private void ctlUsers_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
         }
     }
 }

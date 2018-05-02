@@ -106,7 +106,6 @@
             this.ctlUsers.RowHeadersVisible = false;
             this.ctlUsers.Size = new System.Drawing.Size(697, 394);
             this.ctlUsers.TabIndex = 0;
-            this.ctlUsers.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.ctlUsers_CellContentClick);
             // 
             // Id
             // 
@@ -153,28 +152,28 @@
             this.btnDelUserContextMenu,
             this.rewardUserToolStripMenuItem});
             this.ctlContextMenu.Name = "ctlContextMenu";
-            this.ctlContextMenu.Size = new System.Drawing.Size(140, 70);
+            this.ctlContextMenu.Size = new System.Drawing.Size(142, 70);
             // 
             // btnAddUserContextMenu
             // 
             this.btnAddUserContextMenu.Name = "btnAddUserContextMenu";
-            this.btnAddUserContextMenu.Size = new System.Drawing.Size(139, 22);
+            this.btnAddUserContextMenu.Size = new System.Drawing.Size(141, 22);
             this.btnAddUserContextMenu.Text = "Add User...";
             this.btnAddUserContextMenu.Click += new System.EventHandler(this.BtnAddUser_Click);
             // 
             // btnDelUserContextMenu
             // 
             this.btnDelUserContextMenu.Name = "btnDelUserContextMenu";
-            this.btnDelUserContextMenu.Size = new System.Drawing.Size(139, 22);
+            this.btnDelUserContextMenu.Size = new System.Drawing.Size(141, 22);
             this.btnDelUserContextMenu.Text = "Delete User";
             this.btnDelUserContextMenu.Click += new System.EventHandler(this.BtnDelete_Click);
             // 
             // rewardUserToolStripMenuItem
             // 
             this.rewardUserToolStripMenuItem.Name = "rewardUserToolStripMenuItem";
-            this.rewardUserToolStripMenuItem.Size = new System.Drawing.Size(139, 22);
-            this.rewardUserToolStripMenuItem.Text = "Reward User";
-            this.rewardUserToolStripMenuItem.Click += new System.EventHandler(this.rewardUserToolStripMenuItem_Click);
+            this.rewardUserToolStripMenuItem.Size = new System.Drawing.Size(141, 22);
+            this.rewardUserToolStripMenuItem.Text = "Change User";
+            this.rewardUserToolStripMenuItem.Click += new System.EventHandler(this.ChangeUserMenuItem_Click);
             // 
             // ctlRewardsPage
             // 
