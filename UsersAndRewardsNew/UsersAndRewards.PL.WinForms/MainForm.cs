@@ -156,13 +156,24 @@ namespace UsersAndRewards.PL.WinForms
                     // initialization
                     UpdateUsersGrid();
                 }
-                //var user = new User(userForm.FirstName, userForm.LastName, true, userForm.date);
-                //user.Rewards = logic.GetRewards();
-                //user.Rewards = new List<Reward>();
-                //user.Rewards.Add(logic.GetRewardById(0));
-                //// initialization
-                //logic.AddUser(user);
-                //UpdateUsersGrid();
+            }
+        }
+
+        private void ChangeRewardToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var changeReward = new UpdateRewardForm(logic.GetRewards());
+            if (changeReward.ShowDialog() == DialogResult.OK)
+            {
+                var rewardForm = new RewardForm(changeReward.rewardToUpdate);
+                if (rewardForm.ShowDialog() == DialogResult.OK)
+                {
+                    var rwrd = changeReward.rewardToUpdate;
+                    rwrd.Title = rewardForm.RewardTitle;
+                    rwrd.Description = rewardForm.RewardDescription;
+                    logic.UpdateReward(rwrd);
+                    UpdateRewardGrid();
+                    UpdateUsersGrid();
+                }
             }
         }
     }

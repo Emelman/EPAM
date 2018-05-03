@@ -65,17 +65,17 @@
     <Compile Include="RewardForms\RewardForm.Designer.cs">
       <DependentUpon>RewardForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="RewardForms\UpadteRewardForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RewardForms\UpadteRewardForm.Designer.cs">
+      <DependentUpon>UpadteRewardForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="UserForms\DeleteUserForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="UserForms\DeleteUserForm.Designer.cs">
       <DependentUpon>DeleteUserForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="UserForms\ChangeUserForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="UserForms\ChangeUserForm.Designer.cs">
-      <DependentUpon>ChangeUserForm.cs</DependentUpon>
     </Compile>
     <Compile Include="UserForms\UpdateUserForm.cs">
       <SubType>Form</SubType>
@@ -107,11 +107,11 @@
     <EmbeddedResource Include="RewardForms\RewardForm.resx">
       <DependentUpon>RewardForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="RewardForms\UpadteRewardForm.resx">
+      <DependentUpon>UpadteRewardForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UserForms\DeleteUserForm.resx">
       <DependentUpon>DeleteUserForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="UserForms\ChangeUserForm.resx">
-      <DependentUpon>ChangeUserForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserForms\UpdateUserForm.resx">
       <DependentUpon>UpdateUserForm.cs</DependentUpon>

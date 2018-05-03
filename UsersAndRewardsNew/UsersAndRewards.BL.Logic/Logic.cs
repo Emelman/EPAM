@@ -75,7 +75,7 @@ namespace UsersAndRewards.BL.Logic
 
 		public void UpdateReward(Reward reward)
 		{
-			throw new NotImplementedException();
+            data.UpdateReward(reward);
 		}
 
 		public void UpdateUser(User user)

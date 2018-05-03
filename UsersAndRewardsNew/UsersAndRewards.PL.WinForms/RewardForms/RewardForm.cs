@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using UsersAndRewards.Shared;
 
 namespace UsersAndRewards.PL.WinForms.RewardForms
 {
@@ -19,6 +20,13 @@ namespace UsersAndRewards.PL.WinForms.RewardForms
         public RewardForm()
         {
             InitializeComponent();
+        }
+
+        public RewardForm(Reward _reward)
+        {
+            InitializeComponent();
+            txtRewardTitle.Text = _reward.Title;
+            txtRewardDescrip.Text = _reward.Description;
         }
 
         private void Validate(Control ctl, string ctrlValue, string errorMessage, CancelEventArgs e)

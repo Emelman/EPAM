@@ -57,6 +57,7 @@
             this.ctlEditMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.btnAddUser = new System.Windows.Forms.ToolStripMenuItem();
             this.btnAddReward = new System.Windows.Forms.ToolStripMenuItem();
+            this.changeRewardToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ctlTab.SuspendLayout();
             this.ctlUsersPage.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ctlUsers)).BeginInit();
@@ -214,21 +215,22 @@
             // 
             this.ctrlRewardMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.addStripeItem,
-            this.deleteStripeItem});
+            this.deleteStripeItem,
+            this.changeRewardToolStripMenuItem});
             this.ctrlRewardMenu.Name = "ctrlCntRewardMenu";
-            this.ctrlRewardMenu.Size = new System.Drawing.Size(159, 48);
+            this.ctrlRewardMenu.Size = new System.Drawing.Size(181, 92);
             // 
             // addStripeItem
             // 
             this.addStripeItem.Name = "addStripeItem";
-            this.addStripeItem.Size = new System.Drawing.Size(158, 22);
+            this.addStripeItem.Size = new System.Drawing.Size(180, 22);
             this.addStripeItem.Text = "Add Reward...";
             this.addStripeItem.Click += new System.EventHandler(this.BtnAddReward_Click);
             // 
             // deleteStripeItem
             // 
             this.deleteStripeItem.Name = "deleteStripeItem";
-            this.deleteStripeItem.Size = new System.Drawing.Size(158, 22);
+            this.deleteStripeItem.Size = new System.Drawing.Size(180, 22);
             this.deleteStripeItem.Text = "Delete Reward...";
             this.deleteStripeItem.Click += new System.EventHandler(this.DeleteRewardStripeItem_Click);
             // 
@@ -305,6 +307,13 @@
             this.btnAddReward.Text = "Add Reward...";
             this.btnAddReward.Click += new System.EventHandler(this.BtnAddReward_Click);
             // 
+            // changeRewardToolStripMenuItem
+            // 
+            this.changeRewardToolStripMenuItem.Name = "changeRewardToolStripMenuItem";
+            this.changeRewardToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.changeRewardToolStripMenuItem.Text = "Change Reward...";
+            this.changeRewardToolStripMenuItem.Click += new System.EventHandler(this.ChangeRewardToolStripMenuItem_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -358,6 +367,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn RewardName;
         private System.Windows.Forms.DataGridViewTextBoxColumn RewardDescription;
         private System.Windows.Forms.ToolStripMenuItem rewardUserToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem changeRewardToolStripMenuItem;
     }
 }
 

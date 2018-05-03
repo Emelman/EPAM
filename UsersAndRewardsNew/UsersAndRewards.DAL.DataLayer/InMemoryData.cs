@@ -101,8 +101,9 @@ namespace UsersAndRewards.DAL.DataLayer
 
 		public void UpdateReward(Reward reward)
 		{
-			throw new NotImplementedException();
-		}
+            var rwrd = rewards.Find(item => item.RewardId == reward.RewardId);
+            rwrd = reward;
+        }
 
 		public void UpdateUser(User user)
 		{
