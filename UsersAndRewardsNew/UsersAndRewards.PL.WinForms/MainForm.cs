@@ -7,40 +7,40 @@ using UsersAndRewards.Shared;
 
 namespace UsersAndRewards.PL.WinForms
 {
-	public partial class MainForm : Form
-	{
-		private ILogic logic;
+    public partial class MainForm : Form
+    {
+        private ILogic logic;
 
-		public MainForm(ILogic logic)
-		{
-			InitializeComponent();
-			this.logic = logic;
+        public MainForm(ILogic logic)
+        {
+            InitializeComponent();
+            this.logic = logic;
             UpdateUsersGrid();
             UpdateRewardGrid();
-		}
+        }
 
-		private void BtnAddUser_Click(object sender, EventArgs e)
-		{
-			AddUser();
-		}
+        private void BtnAddUser_Click(object sender, EventArgs e)
+        {
+            AddUser();
+        }
 
-		private void BtnAddReward_Click(object sender, EventArgs e)
-		{
+        private void BtnAddReward_Click(object sender, EventArgs e)
+        {
             AddReward();
-		}
+        }
 
-		private void AddUser()
-		{
-			var userForm = new UserForm(logic.GetRewards(), logic.GetUsers());
-			if (userForm.ShowDialog() == DialogResult.OK)
-			{
-				var user = new User(userForm.FirstName, userForm.LastName,true,userForm.date);
+        private void AddUser()
+        {
+            var userForm = new UserForm(logic.GetRewards(), logic.GetUsers());
+            if (userForm.ShowDialog() == DialogResult.OK)
+            {
+                var user = new User(userForm.FirstName, userForm.LastName, true, userForm.date);
                 user.Rewards = userForm.rewardToAdd;
-				// initialization
-				logic.AddUser(user);
-				UpdateUsersGrid();
-			}
-		}
+                // initialization
+                logic.AddUser(user);
+                UpdateUsersGrid();
+            }
+        }
 
         private void AddReward()
         {
@@ -59,7 +59,7 @@ namespace UsersAndRewards.PL.WinForms
         }
 
         private void BtnDelete_Click(object sender, EventArgs e)
-		{
+        {
             // remove user
             var length = logic.GetUsers().Count;
             if (length <= 0)
@@ -83,12 +83,12 @@ namespace UsersAndRewards.PL.WinForms
             }
         }
 
-		private void UpdateUsersGrid()
-		{
-			var users = logic.GetUsersViewModel();
-			ctlUsers.DataSource = users;
-			ctlUsers.Refresh();
-		}
+        private void UpdateUsersGrid()
+        {
+            var users = logic.GetUsersViewModel();
+            ctlUsers.DataSource = users;
+            ctlUsers.Refresh();
+        }
 
         private void UpdateRewardGrid()
         {
@@ -112,7 +112,7 @@ namespace UsersAndRewards.PL.WinForms
                 {
                     if (WarningMessage("Are you sure?", "Warning") == DialogResult.Yes)
                     {
-                        for(var i = 0; i < deleteForm.rewardToDell.Count; i++)
+                        for (var i = 0; i < deleteForm.rewardToDell.Count; i++)
                         {
                             logic.DeleteReward(deleteForm.rewardToDell[i].RewardId);
                         }
@@ -120,7 +120,7 @@ namespace UsersAndRewards.PL.WinForms
                         UpdateUsersGrid();
                     }
                 }
-                    
+
             }
         }
 
@@ -141,38 +141,53 @@ namespace UsersAndRewards.PL.WinForms
 
         private void ChangeUserMenuItem_Click(object sender, EventArgs e)
         {
-            var changeUser = new UpdateUserForm(logic.GetUsers());
-            if (changeUser.ShowDialog() == DialogResult.OK)
+            var length = logic.GetUsers().Count;
+            if (length <= 0)
             {
-                var userForm = new UserForm(logic.GetRewards(), changeUser.usersToUpdate);
-                if (userForm.ShowDialog() == DialogResult.OK)
+                WarningMessage("There are no any users to change!", "Warning", MessageBoxButtons.OK);
+            }
+            else
+            {
+                var changeUser = new UpdateUserForm(logic.GetUsers());
+                if (changeUser.ShowDialog() == DialogResult.OK)
                 {
-                    var user = changeUser.usersToUpdate;
-                    user.FirstName = userForm.FirstName;
-                    user.LastName = userForm.LastName;
-                    user.Birthdate = userForm.date;
-                    user.Rewards = userForm.rewardToAdd;
-                    logic.UpdateUser(user);
-                    // initialization
-                    UpdateUsersGrid();
+                    var userForm = new UserForm(logic.GetRewards(), changeUser.usersToUpdate);
+                    if (userForm.ShowDialog() == DialogResult.OK)
+                    {
+                        var user = changeUser.usersToUpdate;
+                        user.FirstName = userForm.FirstName;
+                        user.LastName = userForm.LastName;
+                        user.Birthdate = userForm.date;
+                        user.Rewards = userForm.rewardToAdd;
+                        logic.UpdateUser(user);
+                        // initialization
+                        UpdateUsersGrid();
+                    }
                 }
             }
         }
-
-        private void ChangeRewardToolStripMenuItem_Click(object sender, EventArgs e)
+        private void ChangeRewardMenuItem_Click(object sender, EventArgs e)
         {
-            var changeReward = new UpdateRewardForm(logic.GetRewards());
-            if (changeReward.ShowDialog() == DialogResult.OK)
+            var length = logic.GetRewards().Count;
+            if (length <= 0)
             {
-                var rewardForm = new RewardForm(changeReward.rewardToUpdate);
-                if (rewardForm.ShowDialog() == DialogResult.OK)
+                WarningMessage("There are no any rewards to change!", "Warning", MessageBoxButtons.OK);
+            }
+            else
+            {
+                var changeReward = new UpdateRewardForm(logic.GetRewards());
+                if (changeReward.ShowDialog() == DialogResult.OK)
                 {
-                    var rwrd = changeReward.rewardToUpdate;
-                    rwrd.Title = rewardForm.RewardTitle;
-                    rwrd.Description = rewardForm.RewardDescription;
-                    logic.UpdateReward(rwrd);
-                    UpdateRewardGrid();
-                    UpdateUsersGrid();
+                    var rewardForm = new RewardForm(changeReward.rewardToUpdate);
+                    if (rewardForm.ShowDialog() == DialogResult.OK)
+                    {
+                        var rwrd = changeReward.rewardToUpdate;
+                        rwrd.Title = rewardForm.RewardTitle;
+                        rwrd.Description = rewardForm.RewardDescription;
+                        logic.UpdateReward(rwrd);
+                        UpdateRewardGrid();
+                        UpdateUsersGrid();
+                    }
                 }
             }
         }

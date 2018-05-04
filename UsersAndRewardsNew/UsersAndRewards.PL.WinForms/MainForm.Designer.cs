@@ -312,7 +312,7 @@
             this.changeRewardToolStripMenuItem.Name = "changeRewardToolStripMenuItem";
             this.changeRewardToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.changeRewardToolStripMenuItem.Text = "Change Reward...";
-            this.changeRewardToolStripMenuItem.Click += new System.EventHandler(this.ChangeRewardToolStripMenuItem_Click);
+            this.changeRewardToolStripMenuItem.Click += new System.EventHandler(this.ChangeRewardMenuItem_Click);
             // 
             // MainForm
             // 
