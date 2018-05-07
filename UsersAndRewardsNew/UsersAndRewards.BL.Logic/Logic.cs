@@ -11,7 +11,8 @@ namespace UsersAndRewards.BL.Logic
 		private IData data;
 		public Logic()
 		{
-			data = new InMemoryData();
+			//data = new InMemoryData();
+            data = new SqlData();
 		}
 		public void AddReward(Reward reward)
 		{

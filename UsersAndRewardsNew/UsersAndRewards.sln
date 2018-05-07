@@ -11,6 +11,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UsersAndRewards.DAL.DataLay
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UsersAndRewards.Shared", "UsersAndRewards.Shared\UsersAndRewards.Shared.csproj", "{CA6858A2-AE81-4354-83B8-9C17C03984A5}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{9FDAFD01-F46A-4755-9F14-C6FA1F63FC27}"
+	ProjectSection(SolutionItems) = preProject
+		app.config = app.config
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU

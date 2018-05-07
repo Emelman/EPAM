@@ -14,6 +14,11 @@ namespace UsersAndRewards.Shared
 
 		public List<Reward> Rewards { get; set; }
 
+        public User()
+        {
+
+        }
+
         public User(string _name, string _surname, bool _maleFemale, DateTime _birthD, string patr = null)
         {
             FirstName = _name;
