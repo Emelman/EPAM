@@ -9,7 +9,7 @@ namespace UsersAndRewards.DAL.DataLayer
 {
     public class SqlData : IData
     {
-        private string connectionString = ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString;
+        private static string connectionString = ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString;
 
         private SqlCommand DefaultConnectionCommand(string procedureName, CommandType storedProcedure)
         {
@@ -32,31 +32,39 @@ namespace UsersAndRewards.DAL.DataLayer
             }
         }
 
-        public void AddUser(User user) /// base name MySQL_Base
+        public void AddUser(User user) 
         {
             using (var connection = new SqlConnection(connectionString))
             {
                 var command = DefaultConnectionCommand("AddUsers",CommandType.StoredProcedure);
-                command.Connection = connection;
-
                 command.Parameters.AddWithValue("@firstName", user.FirstName);
                 command.Parameters.AddWithValue("@lastName", user.LastName);
                 command.Parameters.AddWithValue("@birthdate", user.Birthdate);
-                //command.Parameters.AddWithValue("@rewardIds", );
-
+                command.Connection = connection;
                 connection.Open();
-
-
-
-                var result = command.ExecuteScalar();
-                
-                var userId = result as int?;
-                if (userId.HasValue)
+                using (var reader = command.ExecuteReader())
                 {
-                    user.UserId = userId.Value;
+                    while (reader.Read())
+                    {
+                        int? userId = reader.GetInt32(0);
+                        if (userId.HasValue)
+                        {
+                            user.UserId = userId.Value;
+                        }
+                    }
                 }
-
-                //var newMan = 1;
+            }
+            foreach (var mc in user.Rewards)
+            {
+                using (var connection = new SqlConnection(connectionString)) 
+                {
+                    var command = DefaultConnectionCommand("AddRewardToUser", CommandType.StoredProcedure);
+                    command.Connection = connection;
+                    command.Parameters.AddWithValue("@UserId", user.UserId);
+                    command.Parameters.AddWithValue("@RewardID", mc.RewardId);
+                    connection.Open();
+                    command.ExecuteScalar();
+                }
             }
         }
 
@@ -163,30 +171,6 @@ namespace UsersAndRewards.DAL.DataLayer
 
         public List<User> GetUsers()
         {
-            //AddUser(new User("Lamer", "Jack", true, DateTime.Now));
-            //var rwrd = new Reward();
-            //rwrd.Title = "Big bada boom";
-            //rwrd.Description = "Expload everything around you!";
-            //AddReward(rwrd);
-
-            //DeleteReward(4);
-            //DeleteUser(17);
-
-            //var rwrd = new Reward();
-            //rwrd.RewardId = 5;
-            //rwrd.Title = "!Big bada boom!";
-            //rwrd.Description = "Expload baddddd everything around you!";
-            //UpdateReward(rwrd);
-
-            //var allRewards = GetRewards();
-
-            //var user1 = new User("Bullark", "Pepep", true, DateTime.Now);
-            //user1.UserId = 13;
-            //user1.Rewards = new List<Reward>();
-            //user1.Rewards.Add(allRewards[0]);
-            //user1.Rewards.Add(allRewards[1]);
-            //UpdateUser(user1);
-
             List<User> users = new List<User>();
             using (var connection = new SqlConnection(connectionString))
             {
@@ -303,7 +287,7 @@ namespace UsersAndRewards.DAL.DataLayer
             }
             foreach (var mc in user.Rewards)
             {
-                using (var connection = new SqlConnection(connectionString)) //AddRewardToUser(@UserId int, @RewardID int)
+                using (var connection = new SqlConnection(connectionString))
                 {
                     var command = DefaultConnectionCommand("AddRewardToUser", CommandType.StoredProcedure);
                     command.Connection = connection;
