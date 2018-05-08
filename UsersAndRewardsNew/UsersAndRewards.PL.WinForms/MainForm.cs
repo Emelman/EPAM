@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Windows.Forms;
 using UsersAndRewards.PL.WinForms.RewardForms;
@@ -68,8 +69,17 @@ namespace UsersAndRewards.PL.WinForms
             }
             else
             {
-                var deleteForm = new DeleteUserForm(logic.GetUsers());
-                if (deleteForm.ShowDialog() == DialogResult.OK)
+                //
+                var row = ctlUsers.SelectedCells[0].RowIndex;
+                var userId = ctlUsers["id", row];
+                string id = userId.EditedFormattedValue.ToString();
+                if (WarningMessage("Are you sure?", "Warning") == DialogResult.Yes)
+                {
+                    logic.DeleteUser(int.Parse(id));
+                    UpdateUsersGrid();
+                }
+                /*var deleteForm = new DeleteUserForm(logic.GetUsers());
+                  if (deleteForm.ShowDialog() == DialogResult.OK)
                 {
                     if (WarningMessage("Are you sure?", "Warning") == DialogResult.Yes)
                     {
@@ -79,7 +89,7 @@ namespace UsersAndRewards.PL.WinForms
                         }
                         UpdateUsersGrid();
                     }
-                }
+                }*/
             }
         }
 
@@ -190,6 +200,11 @@ namespace UsersAndRewards.PL.WinForms
                     }
                 }
             }
+        }
+
+        private void SortDataGridUsers(object sender, DataGridViewSortCompareEventArgs e)
+        {
+            ctlUsers.Sort(new DataGridComparer(SortOrder.Ascending));
         }
     }
 }
