@@ -68,33 +68,15 @@ namespace UsersAndRewards.PL.WinForms
             }
             else
             {
-                var deleteForm = new DeleteUserForm(logic.GetUsers());
-                if (deleteForm.ShowDialog() == DialogResult.OK)
+                var row = ctlUsers.SelectedCells[0].RowIndex;
+                var userId = ctlUsers["id", row];
+                string id = userId.EditedFormattedValue.ToString();
+                if (WarningMessage("Are you sure?", "Warning") == DialogResult.Yes)
                 {
-                    if (WarningMessage("Are you sure?", "Warning") == DialogResult.Yes)
-                    {
-                        for (var i = 0; i < deleteForm.usersToDell.Count; i++)
-                        {
-                            logic.DeleteUser(deleteForm.usersToDell[i].UserId);
-                        }
-                        UpdateUsersGrid();
-                    }
+                    logic.DeleteUser(int.Parse(id));
+                    UpdateUsersGrid();
                 }
             }
-        }
-
-        private void UpdateUsersGrid()
-        {
-            var users = logic.GetUsersViewModel();
-            ctlUsers.DataSource = users;
-            ctlUsers.Refresh();
-        }
-
-        private void UpdateRewardGrid()
-        {
-            var rewards = logic.GetRewardViewModels();
-            ctlRewards.DataSource = rewards;
-            ctlRewardsPage.Refresh();
         }
 
         private void DeleteRewardStripeItem_Click(object sender, EventArgs e)
@@ -107,36 +89,16 @@ namespace UsersAndRewards.PL.WinForms
             }
             else
             {
-                var deleteForm = new DeleteRewardForm(logic.GetRewards());
-                if (deleteForm.ShowDialog() == DialogResult.OK)
+                var row = ctlRewards.SelectedCells[0].RowIndex;
+                var rewardId = ctlRewards["id", row];
+                string id = rewardId.EditedFormattedValue.ToString();
+                if (WarningMessage("Are you sure?", "Warning") == DialogResult.Yes)
                 {
-                    if (WarningMessage("Are you sure?", "Warning") == DialogResult.Yes)
-                    {
-                        for (var i = 0; i < deleteForm.rewardToDell.Count; i++)
-                        {
-                            logic.DeleteReward(deleteForm.rewardToDell[i].RewardId);
-                        }
-                        UpdateRewardGrid();
-                        UpdateUsersGrid();
-                    }
+                    logic.DeleteReward(int.Parse(id));
+                    UpdateRewardGrid();
+                    UpdateUsersGrid();
                 }
-
             }
-        }
-
-        private void BtnExit_Click(object sender, EventArgs e)
-        {
-            Application.Exit();
-        }
-
-        private DialogResult WarningMessage(string sentence1, string sentence2, MessageBoxButtons specificBox = MessageBoxButtons.YesNo)
-        {
-            var res = MessageBox.Show(
-                sentence1,
-                sentence2,
-                specificBox,
-                MessageBoxIcon.Warning);
-            return res;
         }
 
         private void ChangeUserMenuItem_Click(object sender, EventArgs e)
@@ -175,21 +137,50 @@ namespace UsersAndRewards.PL.WinForms
             }
             else
             {
-                var changeReward = new UpdateRewardForm(logic.GetRewards());
-                if (changeReward.ShowDialog() == DialogResult.OK)
+                var row = ctlRewards.SelectedCells[0].RowIndex;
+                var rewardId = ctlRewards["RewardID", row];
+                string id = rewardId.EditedFormattedValue.ToString();
+                var rewardForm = new RewardForm(logic.GetRewardById(int.Parse(id)));
+                if (rewardForm.ShowDialog() == DialogResult.OK)
                 {
-                    var rewardForm = new RewardForm(changeReward.rewardToUpdate);
-                    if (rewardForm.ShowDialog() == DialogResult.OK)
-                    {
-                        var rwrd = changeReward.rewardToUpdate;
-                        rwrd.Title = rewardForm.RewardTitle;
-                        rwrd.Description = rewardForm.RewardDescription;
-                        logic.UpdateReward(rwrd);
-                        UpdateRewardGrid();
-                        UpdateUsersGrid();
-                    }
+                    var rwrd = new Reward();
+                    rwrd.Title = rewardForm.RewardTitle;
+                    rwrd.Description = rewardForm.RewardDescription;
+                    rwrd.RewardId = int.Parse(id);
+                    logic.UpdateReward(rwrd);
+                    UpdateRewardGrid();
+                    UpdateUsersGrid();
                 }
             }
+        }
+
+        private void UpdateUsersGrid()
+        {
+            var users = logic.GetUsersViewModel();
+            ctlUsers.DataSource = users;
+            ctlUsers.Refresh();
+        }
+
+        private void UpdateRewardGrid()
+        {
+            var rewards = logic.GetRewardViewModels();
+            ctlRewards.DataSource = rewards;
+            ctlRewardsPage.Refresh();
+        }
+
+        private void BtnExit_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
+
+        private DialogResult WarningMessage(string sentence1, string sentence2, MessageBoxButtons specificBox = MessageBoxButtons.YesNo)
+        {
+            var res = MessageBox.Show(
+                sentence1,
+                sentence2,
+                specificBox,
+                MessageBoxIcon.Warning);
+            return res;
         }
     }
 }

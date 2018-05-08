@@ -44,12 +44,10 @@
             this.rewardUserToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ctlRewardsPage = new System.Windows.Forms.TabPage();
             this.ctlRewards = new System.Windows.Forms.DataGridView();
-            this.RewardID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ctrlRewardMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.addStripeItem = new System.Windows.Forms.ToolStripMenuItem();
             this.deleteStripeItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.RewardName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.RewardDescription = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.changeRewardToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ctlMainMenu = new System.Windows.Forms.MenuStrip();
             this.ctlFileMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.btnExit = new System.Windows.Forms.ToolStripMenuItem();
@@ -57,7 +55,9 @@
             this.ctlEditMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.btnAddUser = new System.Windows.Forms.ToolStripMenuItem();
             this.btnAddReward = new System.Windows.Forms.ToolStripMenuItem();
-            this.changeRewardToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.RewardID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.RewardName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.RewardDescription = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ctlTab.SuspendLayout();
             this.ctlUsersPage.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ctlUsers)).BeginInit();
@@ -103,8 +103,10 @@
             this.ctlUsers.ContextMenuStrip = this.ctlContextMenu;
             this.ctlUsers.Dock = System.Windows.Forms.DockStyle.Fill;
             this.ctlUsers.Location = new System.Drawing.Point(3, 3);
+            this.ctlUsers.MultiSelect = false;
             this.ctlUsers.Name = "ctlUsers";
             this.ctlUsers.RowHeadersVisible = false;
+            this.ctlUsers.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.ctlUsers.Size = new System.Drawing.Size(697, 394);
             this.ctlUsers.TabIndex = 0;
             // 
@@ -197,19 +199,13 @@
             this.ctlRewards.ContextMenuStrip = this.ctrlRewardMenu;
             this.ctlRewards.Dock = System.Windows.Forms.DockStyle.Fill;
             this.ctlRewards.Location = new System.Drawing.Point(3, 3);
+            this.ctlRewards.MultiSelect = false;
             this.ctlRewards.Name = "ctlRewards";
             this.ctlRewards.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.ctlRewards.RowHeadersVisible = false;
+            this.ctlRewards.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.ctlRewards.Size = new System.Drawing.Size(697, 394);
             this.ctlRewards.TabIndex = 0;
-            // 
-            // RewardID
-            // 
-            this.RewardID.ContextMenuStrip = this.ctrlRewardMenu;
-            this.RewardID.DataPropertyName = "RewardId";
-            this.RewardID.HeaderText = "ID";
-            this.RewardID.Name = "RewardID";
-            this.RewardID.Visible = false;
             // 
             // ctrlRewardMenu
             // 
@@ -218,38 +214,28 @@
             this.deleteStripeItem,
             this.changeRewardToolStripMenuItem});
             this.ctrlRewardMenu.Name = "ctrlCntRewardMenu";
-            this.ctrlRewardMenu.Size = new System.Drawing.Size(181, 92);
+            this.ctrlRewardMenu.Size = new System.Drawing.Size(167, 70);
             // 
             // addStripeItem
             // 
             this.addStripeItem.Name = "addStripeItem";
-            this.addStripeItem.Size = new System.Drawing.Size(180, 22);
+            this.addStripeItem.Size = new System.Drawing.Size(166, 22);
             this.addStripeItem.Text = "Add Reward...";
             this.addStripeItem.Click += new System.EventHandler(this.BtnAddReward_Click);
             // 
             // deleteStripeItem
             // 
             this.deleteStripeItem.Name = "deleteStripeItem";
-            this.deleteStripeItem.Size = new System.Drawing.Size(180, 22);
+            this.deleteStripeItem.Size = new System.Drawing.Size(166, 22);
             this.deleteStripeItem.Text = "Delete Reward...";
             this.deleteStripeItem.Click += new System.EventHandler(this.DeleteRewardStripeItem_Click);
             // 
-            // RewardName
+            // changeRewardToolStripMenuItem
             // 
-            this.RewardName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.RewardName.ContextMenuStrip = this.ctrlRewardMenu;
-            this.RewardName.DataPropertyName = "RewardTitle";
-            this.RewardName.HeaderText = "Title";
-            this.RewardName.Name = "RewardName";
-            this.RewardName.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            // 
-            // RewardDescription
-            // 
-            this.RewardDescription.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.RewardDescription.ContextMenuStrip = this.ctrlRewardMenu;
-            this.RewardDescription.DataPropertyName = "RewardDescription";
-            this.RewardDescription.HeaderText = "Description";
-            this.RewardDescription.Name = "RewardDescription";
+            this.changeRewardToolStripMenuItem.Name = "changeRewardToolStripMenuItem";
+            this.changeRewardToolStripMenuItem.Size = new System.Drawing.Size(166, 22);
+            this.changeRewardToolStripMenuItem.Text = "Change Reward...";
+            this.changeRewardToolStripMenuItem.Click += new System.EventHandler(this.ChangeRewardMenuItem_Click);
             // 
             // ctlMainMenu
             // 
@@ -307,12 +293,30 @@
             this.btnAddReward.Text = "Add Reward...";
             this.btnAddReward.Click += new System.EventHandler(this.BtnAddReward_Click);
             // 
-            // changeRewardToolStripMenuItem
+            // RewardID
             // 
-            this.changeRewardToolStripMenuItem.Name = "changeRewardToolStripMenuItem";
-            this.changeRewardToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.changeRewardToolStripMenuItem.Text = "Change Reward...";
-            this.changeRewardToolStripMenuItem.Click += new System.EventHandler(this.ChangeRewardMenuItem_Click);
+            this.RewardID.ContextMenuStrip = this.ctrlRewardMenu;
+            this.RewardID.DataPropertyName = "RewardId";
+            this.RewardID.HeaderText = "Id";
+            this.RewardID.Name = "RewardID";
+            this.RewardID.Visible = false;
+            // 
+            // RewardName
+            // 
+            this.RewardName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.RewardName.ContextMenuStrip = this.ctrlRewardMenu;
+            this.RewardName.DataPropertyName = "RewardTitle";
+            this.RewardName.HeaderText = "Title";
+            this.RewardName.Name = "RewardName";
+            this.RewardName.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            // 
+            // RewardDescription
+            // 
+            this.RewardDescription.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.RewardDescription.ContextMenuStrip = this.ctrlRewardMenu;
+            this.RewardDescription.DataPropertyName = "RewardDescription";
+            this.RewardDescription.HeaderText = "Description";
+            this.RewardDescription.Name = "RewardDescription";
             // 
             // MainForm
             // 
@@ -363,11 +367,11 @@
         private System.Windows.Forms.ContextMenuStrip ctrlRewardMenu;
         private System.Windows.Forms.ToolStripMenuItem addStripeItem;
         private System.Windows.Forms.ToolStripMenuItem deleteStripeItem;
+        private System.Windows.Forms.ToolStripMenuItem rewardUserToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem changeRewardToolStripMenuItem;
         private System.Windows.Forms.DataGridViewTextBoxColumn RewardID;
         private System.Windows.Forms.DataGridViewTextBoxColumn RewardName;
         private System.Windows.Forms.DataGridViewTextBoxColumn RewardDescription;
-        private System.Windows.Forms.ToolStripMenuItem rewardUserToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem changeRewardToolStripMenuItem;
     }
 }
 
