@@ -99,6 +99,7 @@ namespace UsersAndRewards.DAL.DataLayer
             {
                 var command = DefaultConnectionCommand("GetRewardById", CommandType.StoredProcedure);
                 command.Connection = connection;
+                command.Parameters.AddWithValue("@RewardId", rewardId);
                 connection.Open();
                 
                 using (var reader = command.ExecuteReader())
