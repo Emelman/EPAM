@@ -36,35 +36,21 @@ namespace UsersAndRewards.DAL.DataLayer
         {
             using (var connection = new SqlConnection(connectionString))
             {
+                DataTable tvp = new DataTable();
+                tvp.Columns.Add("Id", typeof(Int32));
+                foreach (var reward in user.Rewards)
+                {
+                    tvp.Rows.Add(reward.RewardId);
+                }
                 var command = DefaultConnectionCommand("AddUsers",CommandType.StoredProcedure);
                 command.Parameters.AddWithValue("@firstName", user.FirstName);
                 command.Parameters.AddWithValue("@lastName", user.LastName);
                 command.Parameters.AddWithValue("@birthdate", user.Birthdate);
+                SqlParameter tvparam = command.Parameters.AddWithValue("@rewardIds", tvp);
+                tvparam.SqlDbType = SqlDbType.Structured;
                 command.Connection = connection;
                 connection.Open();
-                using (var reader = command.ExecuteReader())
-                {
-                    while (reader.Read())
-                    {
-                        int? userId = reader.GetInt32(0);
-                        if (userId.HasValue)
-                        {
-                            user.UserId = userId.Value;
-                        }
-                    }
-                }
-            }
-            foreach (var mc in user.Rewards)
-            {
-                using (var connection = new SqlConnection(connectionString)) 
-                {
-                    var command = DefaultConnectionCommand("AddRewardToUser", CommandType.StoredProcedure);
-                    command.Connection = connection;
-                    command.Parameters.AddWithValue("@UserId", user.UserId);
-                    command.Parameters.AddWithValue("@RewardID", mc.RewardId);
-                    connection.Open();
-                    command.ExecuteScalar();
-                }
+                command.ExecuteNonQuery();
             }
         }
 

@@ -44,10 +44,13 @@
             this.rewardUserToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ctlRewardsPage = new System.Windows.Forms.TabPage();
             this.ctlRewards = new System.Windows.Forms.DataGridView();
+            this.RewardID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ctrlRewardMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.addStripeItem = new System.Windows.Forms.ToolStripMenuItem();
             this.deleteStripeItem = new System.Windows.Forms.ToolStripMenuItem();
             this.changeRewardToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.RewardName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.RewardDescription = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ctlMainMenu = new System.Windows.Forms.MenuStrip();
             this.ctlFileMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.btnExit = new System.Windows.Forms.ToolStripMenuItem();
@@ -55,9 +58,6 @@
             this.ctlEditMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.btnAddUser = new System.Windows.Forms.ToolStripMenuItem();
             this.btnAddReward = new System.Windows.Forms.ToolStripMenuItem();
-            this.RewardID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.RewardName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.RewardDescription = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ctlTab.SuspendLayout();
             this.ctlUsersPage.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ctlUsers)).BeginInit();
@@ -73,19 +73,21 @@
             this.ctlTab.Controls.Add(this.ctlUsersPage);
             this.ctlTab.Controls.Add(this.ctlRewardsPage);
             this.ctlTab.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ctlTab.Location = new System.Drawing.Point(0, 24);
+            this.ctlTab.Location = new System.Drawing.Point(0, 36);
+            this.ctlTab.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.ctlTab.Name = "ctlTab";
             this.ctlTab.SelectedIndex = 0;
-            this.ctlTab.Size = new System.Drawing.Size(711, 426);
+            this.ctlTab.Size = new System.Drawing.Size(558, 259);
             this.ctlTab.TabIndex = 0;
             // 
             // ctlUsersPage
             // 
             this.ctlUsersPage.Controls.Add(this.ctlUsers);
-            this.ctlUsersPage.Location = new System.Drawing.Point(4, 22);
+            this.ctlUsersPage.Location = new System.Drawing.Point(4, 25);
+            this.ctlUsersPage.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.ctlUsersPage.Name = "ctlUsersPage";
-            this.ctlUsersPage.Padding = new System.Windows.Forms.Padding(3);
-            this.ctlUsersPage.Size = new System.Drawing.Size(703, 400);
+            this.ctlUsersPage.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.ctlUsersPage.Size = new System.Drawing.Size(550, 230);
             this.ctlUsersPage.TabIndex = 0;
             this.ctlUsersPage.Text = "Users";
             this.ctlUsersPage.UseVisualStyleBackColor = true;
@@ -102,12 +104,13 @@
             this.Rewards});
             this.ctlUsers.ContextMenuStrip = this.ctlContextMenu;
             this.ctlUsers.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ctlUsers.Location = new System.Drawing.Point(3, 3);
+            this.ctlUsers.Location = new System.Drawing.Point(4, 4);
+            this.ctlUsers.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.ctlUsers.MultiSelect = false;
             this.ctlUsers.Name = "ctlUsers";
             this.ctlUsers.RowHeadersVisible = false;
             this.ctlUsers.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.ctlUsers.Size = new System.Drawing.Size(697, 394);
+            this.ctlUsers.Size = new System.Drawing.Size(542, 222);
             this.ctlUsers.TabIndex = 0;
             // 
             // Id
@@ -150,41 +153,43 @@
             // 
             // ctlContextMenu
             // 
+            this.ctlContextMenu.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.ctlContextMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.btnAddUserContextMenu,
             this.btnDelUserContextMenu,
             this.rewardUserToolStripMenuItem});
             this.ctlContextMenu.Name = "ctlContextMenu";
-            this.ctlContextMenu.Size = new System.Drawing.Size(142, 70);
+            this.ctlContextMenu.Size = new System.Drawing.Size(195, 100);
             // 
             // btnAddUserContextMenu
             // 
             this.btnAddUserContextMenu.Name = "btnAddUserContextMenu";
-            this.btnAddUserContextMenu.Size = new System.Drawing.Size(141, 22);
+            this.btnAddUserContextMenu.Size = new System.Drawing.Size(194, 32);
             this.btnAddUserContextMenu.Text = "Add User...";
             this.btnAddUserContextMenu.Click += new System.EventHandler(this.BtnAddUser_Click);
             // 
             // btnDelUserContextMenu
             // 
             this.btnDelUserContextMenu.Name = "btnDelUserContextMenu";
-            this.btnDelUserContextMenu.Size = new System.Drawing.Size(141, 22);
+            this.btnDelUserContextMenu.Size = new System.Drawing.Size(194, 32);
             this.btnDelUserContextMenu.Text = "Delete User";
             this.btnDelUserContextMenu.Click += new System.EventHandler(this.BtnDelete_Click);
             // 
             // rewardUserToolStripMenuItem
             // 
             this.rewardUserToolStripMenuItem.Name = "rewardUserToolStripMenuItem";
-            this.rewardUserToolStripMenuItem.Size = new System.Drawing.Size(141, 22);
+            this.rewardUserToolStripMenuItem.Size = new System.Drawing.Size(194, 32);
             this.rewardUserToolStripMenuItem.Text = "Change User";
             this.rewardUserToolStripMenuItem.Click += new System.EventHandler(this.ChangeUserMenuItem_Click);
             // 
             // ctlRewardsPage
             // 
             this.ctlRewardsPage.Controls.Add(this.ctlRewards);
-            this.ctlRewardsPage.Location = new System.Drawing.Point(4, 22);
+            this.ctlRewardsPage.Location = new System.Drawing.Point(4, 25);
+            this.ctlRewardsPage.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.ctlRewardsPage.Name = "ctlRewardsPage";
-            this.ctlRewardsPage.Padding = new System.Windows.Forms.Padding(3);
-            this.ctlRewardsPage.Size = new System.Drawing.Size(703, 400);
+            this.ctlRewardsPage.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.ctlRewardsPage.Size = new System.Drawing.Size(940, 495);
             this.ctlRewardsPage.TabIndex = 1;
             this.ctlRewardsPage.Text = "Rewards";
             this.ctlRewardsPage.UseVisualStyleBackColor = true;
@@ -198,100 +203,15 @@
             this.RewardDescription});
             this.ctlRewards.ContextMenuStrip = this.ctrlRewardMenu;
             this.ctlRewards.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ctlRewards.Location = new System.Drawing.Point(3, 3);
+            this.ctlRewards.Location = new System.Drawing.Point(4, 4);
+            this.ctlRewards.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.ctlRewards.MultiSelect = false;
             this.ctlRewards.Name = "ctlRewards";
             this.ctlRewards.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.ctlRewards.RowHeadersVisible = false;
             this.ctlRewards.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.ctlRewards.Size = new System.Drawing.Size(697, 394);
+            this.ctlRewards.Size = new System.Drawing.Size(932, 487);
             this.ctlRewards.TabIndex = 0;
-            // 
-            // ctrlRewardMenu
-            // 
-            this.ctrlRewardMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.addStripeItem,
-            this.deleteStripeItem,
-            this.changeRewardToolStripMenuItem});
-            this.ctrlRewardMenu.Name = "ctrlCntRewardMenu";
-            this.ctrlRewardMenu.Size = new System.Drawing.Size(167, 70);
-            // 
-            // addStripeItem
-            // 
-            this.addStripeItem.Name = "addStripeItem";
-            this.addStripeItem.Size = new System.Drawing.Size(166, 22);
-            this.addStripeItem.Text = "Add Reward...";
-            this.addStripeItem.Click += new System.EventHandler(this.BtnAddReward_Click);
-            // 
-            // deleteStripeItem
-            // 
-            this.deleteStripeItem.Name = "deleteStripeItem";
-            this.deleteStripeItem.Size = new System.Drawing.Size(166, 22);
-            this.deleteStripeItem.Text = "Delete Reward...";
-            this.deleteStripeItem.Click += new System.EventHandler(this.DeleteRewardStripeItem_Click);
-            // 
-            // changeRewardToolStripMenuItem
-            // 
-            this.changeRewardToolStripMenuItem.Name = "changeRewardToolStripMenuItem";
-            this.changeRewardToolStripMenuItem.Size = new System.Drawing.Size(166, 22);
-            this.changeRewardToolStripMenuItem.Text = "Change Reward...";
-            this.changeRewardToolStripMenuItem.Click += new System.EventHandler(this.ChangeRewardMenuItem_Click);
-            // 
-            // ctlMainMenu
-            // 
-            this.ctlMainMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.ctlFileMenu,
-            this.ctlEditMenu});
-            this.ctlMainMenu.Location = new System.Drawing.Point(0, 0);
-            this.ctlMainMenu.Name = "ctlMainMenu";
-            this.ctlMainMenu.Size = new System.Drawing.Size(711, 24);
-            this.ctlMainMenu.TabIndex = 1;
-            this.ctlMainMenu.Text = "menuStrip1";
-            // 
-            // ctlFileMenu
-            // 
-            this.ctlFileMenu.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.btnExit,
-            this.toolStripSeparator1});
-            this.ctlFileMenu.Name = "ctlFileMenu";
-            this.ctlFileMenu.Size = new System.Drawing.Size(37, 20);
-            this.ctlFileMenu.Text = "&File";
-            // 
-            // btnExit
-            // 
-            this.btnExit.Name = "btnExit";
-            this.btnExit.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.F4)));
-            this.btnExit.Size = new System.Drawing.Size(134, 22);
-            this.btnExit.Text = "Exit";
-            this.btnExit.Click += new System.EventHandler(this.BtnExit_Click);
-            // 
-            // toolStripSeparator1
-            // 
-            this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(131, 6);
-            // 
-            // ctlEditMenu
-            // 
-            this.ctlEditMenu.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.btnAddUser,
-            this.btnAddReward});
-            this.ctlEditMenu.Name = "ctlEditMenu";
-            this.ctlEditMenu.Size = new System.Drawing.Size(39, 20);
-            this.ctlEditMenu.Text = "Edit";
-            // 
-            // btnAddUser
-            // 
-            this.btnAddUser.Name = "btnAddUser";
-            this.btnAddUser.Size = new System.Drawing.Size(147, 22);
-            this.btnAddUser.Text = "Add User...";
-            this.btnAddUser.Click += new System.EventHandler(this.BtnAddUser_Click);
-            // 
-            // btnAddReward
-            // 
-            this.btnAddReward.Name = "btnAddReward";
-            this.btnAddReward.Size = new System.Drawing.Size(147, 22);
-            this.btnAddReward.Text = "Add Reward...";
-            this.btnAddReward.Click += new System.EventHandler(this.BtnAddReward_Click);
             // 
             // RewardID
             // 
@@ -300,6 +220,37 @@
             this.RewardID.HeaderText = "Id";
             this.RewardID.Name = "RewardID";
             this.RewardID.Visible = false;
+            // 
+            // ctrlRewardMenu
+            // 
+            this.ctrlRewardMenu.ImageScalingSize = new System.Drawing.Size(20, 20);
+            this.ctrlRewardMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.addStripeItem,
+            this.deleteStripeItem,
+            this.changeRewardToolStripMenuItem});
+            this.ctrlRewardMenu.Name = "ctrlCntRewardMenu";
+            this.ctrlRewardMenu.Size = new System.Drawing.Size(233, 100);
+            // 
+            // addStripeItem
+            // 
+            this.addStripeItem.Name = "addStripeItem";
+            this.addStripeItem.Size = new System.Drawing.Size(232, 32);
+            this.addStripeItem.Text = "Add Reward...";
+            this.addStripeItem.Click += new System.EventHandler(this.BtnAddReward_Click);
+            // 
+            // deleteStripeItem
+            // 
+            this.deleteStripeItem.Name = "deleteStripeItem";
+            this.deleteStripeItem.Size = new System.Drawing.Size(232, 32);
+            this.deleteStripeItem.Text = "Delete Reward...";
+            this.deleteStripeItem.Click += new System.EventHandler(this.DeleteRewardStripeItem_Click);
+            // 
+            // changeRewardToolStripMenuItem
+            // 
+            this.changeRewardToolStripMenuItem.Name = "changeRewardToolStripMenuItem";
+            this.changeRewardToolStripMenuItem.Size = new System.Drawing.Size(232, 32);
+            this.changeRewardToolStripMenuItem.Text = "Change Reward...";
+            this.changeRewardToolStripMenuItem.Click += new System.EventHandler(this.ChangeRewardMenuItem_Click);
             // 
             // RewardName
             // 
@@ -318,13 +269,72 @@
             this.RewardDescription.HeaderText = "Description";
             this.RewardDescription.Name = "RewardDescription";
             // 
+            // ctlMainMenu
+            // 
+            this.ctlMainMenu.ImageScalingSize = new System.Drawing.Size(20, 20);
+            this.ctlMainMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.ctlFileMenu,
+            this.ctlEditMenu});
+            this.ctlMainMenu.Location = new System.Drawing.Point(0, 0);
+            this.ctlMainMenu.Name = "ctlMainMenu";
+            this.ctlMainMenu.Padding = new System.Windows.Forms.Padding(8, 2, 0, 2);
+            this.ctlMainMenu.Size = new System.Drawing.Size(558, 36);
+            this.ctlMainMenu.TabIndex = 1;
+            this.ctlMainMenu.Text = "menuStrip1";
+            // 
+            // ctlFileMenu
+            // 
+            this.ctlFileMenu.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.btnExit,
+            this.toolStripSeparator1});
+            this.ctlFileMenu.Name = "ctlFileMenu";
+            this.ctlFileMenu.Size = new System.Drawing.Size(54, 32);
+            this.ctlFileMenu.Text = "&File";
+            // 
+            // btnExit
+            // 
+            this.btnExit.Name = "btnExit";
+            this.btnExit.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.F4)));
+            this.btnExit.Size = new System.Drawing.Size(193, 32);
+            this.btnExit.Text = "Exit";
+            this.btnExit.Click += new System.EventHandler(this.BtnExit_Click);
+            // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(190, 6);
+            // 
+            // ctlEditMenu
+            // 
+            this.ctlEditMenu.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.btnAddUser,
+            this.btnAddReward});
+            this.ctlEditMenu.Name = "ctlEditMenu";
+            this.ctlEditMenu.Size = new System.Drawing.Size(58, 32);
+            this.ctlEditMenu.Text = "Edit";
+            // 
+            // btnAddUser
+            // 
+            this.btnAddUser.Name = "btnAddUser";
+            this.btnAddUser.Size = new System.Drawing.Size(209, 32);
+            this.btnAddUser.Text = "Add User...";
+            this.btnAddUser.Click += new System.EventHandler(this.BtnAddUser_Click);
+            // 
+            // btnAddReward
+            // 
+            this.btnAddReward.Name = "btnAddReward";
+            this.btnAddReward.Size = new System.Drawing.Size(209, 32);
+            this.btnAddReward.Text = "Add Reward...";
+            this.btnAddReward.Click += new System.EventHandler(this.BtnAddReward_Click);
+            // 
             // MainForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(711, 450);
+            this.ClientSize = new System.Drawing.Size(558, 295);
             this.Controls.Add(this.ctlTab);
             this.Controls.Add(this.ctlMainMenu);
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "MainForm";
             this.Text = "Users And Rewards";
             this.ctlTab.ResumeLayout(false);
