@@ -90,7 +90,7 @@ namespace UsersAndRewards.PL.WinForms
             else
             {
                 var row = ctlRewards.SelectedCells[0].RowIndex;
-                var rewardId = ctlRewards["id", row];
+                var rewardId = ctlRewards["RewardID", row];
                 string id = rewardId.EditedFormattedValue.ToString();
                 if (WarningMessage("Are you sure?", "Warning") == DialogResult.Yes)
                 {
@@ -110,21 +110,20 @@ namespace UsersAndRewards.PL.WinForms
             }
             else
             {
-                var changeUser = new UpdateUserForm(logic.GetUsers());
-                if (changeUser.ShowDialog() == DialogResult.OK)
+                var row = ctlUsers.SelectedCells[0].RowIndex;
+                var userId = ctlUsers["id", row];
+                string id = userId.EditedFormattedValue.ToString();
+                var userForm = new UserForm(logic.GetRewards(), logic.GetUserById(int.Parse(id)));
+                if (userForm.ShowDialog() == DialogResult.OK)
                 {
-                    var userForm = new UserForm(logic.GetRewards(), changeUser.usersToUpdate);
-                    if (userForm.ShowDialog() == DialogResult.OK)
-                    {
-                        var user = changeUser.usersToUpdate;
-                        user.FirstName = userForm.FirstName;
-                        user.LastName = userForm.LastName;
-                        user.Birthdate = userForm.date;
-                        user.Rewards = userForm.rewardToAdd;
-                        logic.UpdateUser(user);
-                        // initialization
-                        UpdateUsersGrid();
-                    }
+                    var user = logic.GetUserById(int.Parse(id));
+                    user.FirstName = userForm.FirstName;
+                    user.LastName = userForm.LastName;
+                    user.Birthdate = userForm.date;
+                    user.Rewards = userForm.rewardToAdd;
+                    logic.UpdateUser(user);
+                    // initialization
+                    UpdateUsersGrid();
                 }
             }
         }

@@ -255,35 +255,43 @@ namespace UsersAndRewards.DAL.DataLayer
         {
             using (var connection = new SqlConnection(connectionString))
             {
+                DataTable tvp = new DataTable();
+                tvp.Columns.Add("Id", typeof(Int32));
+                foreach (var reward in user.Rewards)
+                {
+                    tvp.Rows.Add(reward.RewardId);
+                }
                 var command = DefaultConnectionCommand("UpdateUser", CommandType.StoredProcedure);
                 command.Connection = connection;
                 command.Parameters.AddWithValue("@UserId", user.UserId);
                 command.Parameters.AddWithValue("@firstName", user.FirstName);
                 command.Parameters.AddWithValue("@lastName", user.LastName);
                 command.Parameters.AddWithValue("@birthdate", user.Birthdate);
+                SqlParameter tvparam = command.Parameters.AddWithValue("@rewardIds", tvp);
+                tvparam.SqlDbType = SqlDbType.Structured;
                 connection.Open();
                 var result = command.ExecuteScalar();
             }
-            using (var connection = new SqlConnection(connectionString))
-            {
-                var command = DefaultConnectionCommand("RemoveUsersRewards", CommandType.StoredProcedure);
-                command.Connection = connection;
-                command.Parameters.AddWithValue("@UserId", user.UserId);
-                connection.Open();
-                var result = command.ExecuteScalar();
-            }
-            foreach (var mc in user.Rewards)
-            {
-                using (var connection = new SqlConnection(connectionString))
-                {
-                    var command = DefaultConnectionCommand("AddRewardToUser", CommandType.StoredProcedure);
-                    command.Connection = connection;
-                    command.Parameters.AddWithValue("@UserId", user.UserId);
-                    command.Parameters.AddWithValue("@RewardID", mc.RewardId);
-                    connection.Open();
-                    command.ExecuteScalar();
-                }
-            }
+            //using (var connection = new SqlConnection(connectionString))
+            //{
+            //    var command = DefaultConnectionCommand("RemoveUsersRewards", CommandType.StoredProcedure);
+            //    command.Connection = connection;
+            //    command.Parameters.AddWithValue("@UserId", user.UserId);
+            //    connection.Open();
+            //    var result = command.ExecuteScalar();
+            //}
+            //foreach (var mc in user.Rewards)
+            //{
+            //    using (var connection = new SqlConnection(connectionString))
+            //    {
+            //        var command = DefaultConnectionCommand("AddRewardToUser", CommandType.StoredProcedure);
+            //        command.Connection = connection;
+            //        command.Parameters.AddWithValue("@UserId", user.UserId);
+            //        command.Parameters.AddWithValue("@RewardID", mc.RewardId);
+            //        connection.Open();
+            //        command.ExecuteScalar();
+            //    }
+            //}
         }
     }
 }
