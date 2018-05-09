@@ -272,26 +272,6 @@ namespace UsersAndRewards.DAL.DataLayer
                 connection.Open();
                 var result = command.ExecuteScalar();
             }
-            //using (var connection = new SqlConnection(connectionString))
-            //{
-            //    var command = DefaultConnectionCommand("RemoveUsersRewards", CommandType.StoredProcedure);
-            //    command.Connection = connection;
-            //    command.Parameters.AddWithValue("@UserId", user.UserId);
-            //    connection.Open();
-            //    var result = command.ExecuteScalar();
-            //}
-            //foreach (var mc in user.Rewards)
-            //{
-            //    using (var connection = new SqlConnection(connectionString))
-            //    {
-            //        var command = DefaultConnectionCommand("AddRewardToUser", CommandType.StoredProcedure);
-            //        command.Connection = connection;
-            //        command.Parameters.AddWithValue("@UserId", user.UserId);
-            //        command.Parameters.AddWithValue("@RewardID", mc.RewardId);
-            //        connection.Open();
-            //        command.ExecuteScalar();
-            //    }
-            //}
         }
     }
 }

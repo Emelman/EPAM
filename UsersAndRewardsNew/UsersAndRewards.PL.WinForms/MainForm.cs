@@ -70,10 +70,10 @@ namespace UsersAndRewards.PL.WinForms
             {
                 var row = ctlUsers.SelectedCells[0].RowIndex;
                 var userId = ctlUsers["id", row];
-                string id = userId.EditedFormattedValue.ToString();
+                var id = Convert.ToInt32(userId.EditedFormattedValue);
                 if (WarningMessage("Are you sure?", "Warning") == DialogResult.Yes)
                 {
-                    logic.DeleteUser(int.Parse(id));
+                    logic.DeleteUser(id);
                     UpdateUsersGrid();
                 }
             }
@@ -91,10 +91,10 @@ namespace UsersAndRewards.PL.WinForms
             {
                 var row = ctlRewards.SelectedCells[0].RowIndex;
                 var rewardId = ctlRewards["RewardID", row];
-                string id = rewardId.EditedFormattedValue.ToString();
+                var id = Convert.ToInt32(rewardId.EditedFormattedValue);
                 if (WarningMessage("Are you sure?", "Warning") == DialogResult.Yes)
                 {
-                    logic.DeleteReward(int.Parse(id));
+                    logic.DeleteReward(id);
                     UpdateRewardGrid();
                     UpdateUsersGrid();
                 }
@@ -112,11 +112,11 @@ namespace UsersAndRewards.PL.WinForms
             {
                 var row = ctlUsers.SelectedCells[0].RowIndex;
                 var userId = ctlUsers["id", row];
-                string id = userId.EditedFormattedValue.ToString();
-                var userForm = new UserForm(logic.GetRewards(), logic.GetUserById(int.Parse(id)));
+                var id = Convert.ToInt32(userId.EditedFormattedValue);
+                var userForm = new UserForm(logic.GetRewards(), logic.GetUserById(id));
                 if (userForm.ShowDialog() == DialogResult.OK)
                 {
-                    var user = logic.GetUserById(int.Parse(id));
+                    var user = logic.GetUserById(id);
                     user.FirstName = userForm.FirstName;
                     user.LastName = userForm.LastName;
                     user.Birthdate = userForm.date;
@@ -138,14 +138,14 @@ namespace UsersAndRewards.PL.WinForms
             {
                 var row = ctlRewards.SelectedCells[0].RowIndex;
                 var rewardId = ctlRewards["RewardID", row];
-                string id = rewardId.EditedFormattedValue.ToString();
-                var rewardForm = new RewardForm(logic.GetRewardById(int.Parse(id)));
+                var id = Convert.ToInt32(rewardId.EditedFormattedValue);
+                var rewardForm = new RewardForm(logic.GetRewardById(id));
                 if (rewardForm.ShowDialog() == DialogResult.OK)
                 {
                     var rwrd = new Reward();
                     rwrd.Title = rewardForm.RewardTitle;
                     rwrd.Description = rewardForm.RewardDescription;
-                    rwrd.RewardId = int.Parse(id);
+                    rwrd.RewardId = id;
                     logic.UpdateReward(rwrd);
                     UpdateRewardGrid();
                     UpdateUsersGrid();
