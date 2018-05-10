@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.27428.2037
+# Visual Studio 14
+VisualStudioVersion = 14.0.24720.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UsersAndRewards.PL.WinForms", "UsersAndRewards.PL.WinForms\UsersAndRewards.PL.WinForms.csproj", "{E46C37B0-503D-470F-8A66-281B328995EE}"
 EndProject
@@ -11,10 +11,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UsersAndRewards.DAL.DataLay
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UsersAndRewards.Shared", "UsersAndRewards.Shared\UsersAndRewards.Shared.csproj", "{CA6858A2-AE81-4354-83B8-9C17C03984A5}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{9FDAFD01-F46A-4755-9F14-C6FA1F63FC27}"
-	ProjectSection(SolutionItems) = preProject
-		app.config = app.config
-	EndProjectSection
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UsersAndRewards.PL.Web", "UsersAndRewards.PL.Web\UsersAndRewards.PL.Web.csproj", "{74F749A1-7946-444D-AEC3-4F577BBB2559}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -38,6 +35,10 @@ Global
 		{CA6858A2-AE81-4354-83B8-9C17C03984A5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CA6858A2-AE81-4354-83B8-9C17C03984A5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CA6858A2-AE81-4354-83B8-9C17C03984A5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{74F749A1-7946-444D-AEC3-4F577BBB2559}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{74F749A1-7946-444D-AEC3-4F577BBB2559}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{74F749A1-7946-444D-AEC3-4F577BBB2559}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{74F749A1-7946-444D-AEC3-4F577BBB2559}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
